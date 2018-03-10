@@ -1,0 +1,6 @@
+E:\PI\PI_Searchfood\PI_Searchfood.Logica\bin\Debug\PI_Searchfood.Logica.dll
+E:\PI\PI_Searchfood\PI_Searchfood.Logica\bin\Debug\PI_Searchfood.Logica.pdb
+E:\PI\PI_Searchfood\PI_Searchfood.Logica\obj\Debug\PI_Searchfood.Logica.csprojResolveAssemblyReference.cache
+E:\PI\PI_Searchfood\PI_Searchfood.Logica\obj\Debug\PI_Searchfood.Logica.csproj.CoreCompileInputs.cache
+E:\PI\PI_Searchfood\PI_Searchfood.Logica\obj\Debug\PI_Searchfood.Logica.dll
+E:\PI\PI_Searchfood\PI_Searchfood.Logica\obj\Debug\PI_Searchfood.Logica.pdb
