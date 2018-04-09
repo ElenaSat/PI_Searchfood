@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 
 namespace PI_Searchfood.Controller
 {
@@ -14,6 +15,22 @@ namespace PI_Searchfood.Controller
             {   Logica.BL.clsUsuarios obclsUsuario = new Logica.BL.clsUsuarios();
                 return obclsUsuario.getValidarUsuario(obclsUsuarios);
                  }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+
+        }
+
+
+        public int getConsultarCUsuarioController()
+        {
+            try
+            {
+                Logica.BL.clsUsuarios obclsUsuario = new Logica.BL.clsUsuarios();
+                return obclsUsuario.getValidarCodigo();
+            }
             catch (Exception ex)
             {
                 throw ex;

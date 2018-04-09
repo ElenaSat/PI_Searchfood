@@ -52,8 +52,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BL\clsAdministracionEmpresas.cs" />
+    <Compile Include="BL\clsAdministracionPersonas.cs" />
     <Compile Include="BL\clsConexion.cs" />
+    <Compile Include="BL\clsGeneral.cs" />
+    <Compile Include="BL\clsRecuperarPassword.cs" />
     <Compile Include="BL\clsUsuarios.cs" />
+    <Compile Include="Models\clsCorreo.cs" />
+    <Compile Include="Models\clstbAsistenciaRestaurante.cs" />
+    <Compile Include="Models\clstbBonus.cs" />
+    <Compile Include="Models\clstbCategoria.cs" />
+    <Compile Include="Models\clstbCiudad.cs" />
+    <Compile Include="Models\clstbComida.cs" />
+    <Compile Include="Models\clstbDepartamento.cs" />
+    <Compile Include="Models\clstbGenero.cs" />
+    <Compile Include="Models\clstbPais.cs" />
+    <Compile Include="Models\clstbPerfiles.cs" />
+    <Compile Include="Models\clstbPersona.cs" />
+    <Compile Include="Models\clstbReservaDetalle.cs" />
+    <Compile Include="Models\clstbReservas.cs" />
+    <Compile Include="Models\clstbRestaurante.cs" />
     <Compile Include="Models\clsUsuarios.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

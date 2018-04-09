@@ -12,6 +12,14 @@ namespace PI_Searchfood.Views.Administrador.Login
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack) {
+                if (Request.Cookies["Email"]!=null) {
+                    txtEmail.Text = Request.Cookies["Email"].Value.ToString();
+
+                }
+
+
+            }
         }
 
         protected void btnAceptar_Click(object sender, EventArgs e)
@@ -36,7 +44,34 @@ namespace PI_Searchfood.Views.Administrador.Login
                     bool blBandera = obLoginController.getValidarUsuarioController(obclsUsuarios);
                     if (blBandera)
                     {
-                        Response.Redirect("../../Cliente/indexCliente.aspx");//REdicciono
+                        if (chkRecordar.Checked)
+                        {
+                            //DEFINIR COOKIE
+                            HttpCookie cookieEmail = new HttpCookie("Email", txtEmail.Text);
+                            cookieEmail.Expires = DateTime.Now.AddDays(2);
+                            Response.Cookies.Add(cookieEmail);
+                        }
+                        else {
+                            //ELIMINAR COOKIE
+                            HttpCookie cookieEmail = new HttpCookie("Email", txtEmail.Text);
+                            cookieEmail.Expires = DateTime.Now.AddDays(-1);
+                            Response.Cookies.Add(cookieEmail);
+
+
+                        }
+                        ViewState["viewLogin"]= txtEmail.Text;
+                        ViewState["viewPassword"]= txtPassword.Text;
+                        //definir sesion
+                        Session["sesionLogin"] = txtEmail.Text;
+                        Session["sesionPassword"] = txtPassword.Text;
+
+                        //Borrar
+                       // Session.RemoveAll();
+                        //Session.Remove("sesionlogin"); Nombre de variable a remover
+
+                        Response.Redirect("../../Cliente/indexCliente.aspx?stLogin="+txtEmail.Text+"&stPassword="+txtPassword.Text);//REdicciono
+                        //traspaso de datos ?despues enviar parametros se ven
+
                     }
                     else
                     {

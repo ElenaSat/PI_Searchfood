@@ -161,17 +161,26 @@
     <Content Include="vendor\jquery\jquery.min.js" />
     <Content Include="vendor\jquery\jquery.slim.js" />
     <Content Include="vendor\jquery\jquery.slim.min.js" />
+    <Content Include="Views\Administrador\Images\delete.png" />
+    <Content Include="Views\Administrador\Images\edit.png" />
+    <Content Include="Views\Administrador\Images\fondo.gif" />
     <Content Include="Views\Administrador\Index\Default.aspx" />
     <Content Include="Views\Administrador\Index\Icon\imgSearchFood.png" />
     <Content Include="Views\Administrador\Login\frmLogin.aspx" />
-    <Content Include="Views\Administrador\Registros\regCliente.aspx" />
+    <Content Include="Views\Administrador\RecuperarPassword\RecuperarPasswordF.aspx" />
+    <Content Include="Views\Administrador\Registros\regExPersona.aspx" />
+    <Content Include="Views\Administrador\Registros\regExRestaurante.aspx" />
+    <Content Include="Views\Administrador\Registros\regPersonas.aspx" />
     <Content Include="Views\Administrador\Registros\regRestaurante.aspx" />
     <Content Include="Views\Cliente\indexCliente.aspx" />
     <Content Include="Views\Restaurante\indexRestaurante.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\AdministrarPersonaController.cs" />
+    <Compile Include="Controller\AdministrarRestauranteController.cs" />
     <Compile Include="Controller\LoginController.cs" />
+    <Compile Include="Controller\RecuperarPasswordController.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
@@ -211,12 +220,33 @@
     <Compile Include="Views\Administrador\Login\frmLogin.aspx.designer.cs">
       <DependentUpon>frmLogin.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Administrador\Registros\regCliente.aspx.cs">
-      <DependentUpon>regCliente.aspx</DependentUpon>
+    <Compile Include="Views\Administrador\RecuperarPassword\RecuperarPasswordF.aspx.cs">
+      <DependentUpon>RecuperarPasswordF.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\Administrador\Registros\regCliente.aspx.designer.cs">
-      <DependentUpon>regCliente.aspx</DependentUpon>
+    <Compile Include="Views\Administrador\RecuperarPassword\RecuperarPasswordF.aspx.designer.cs">
+      <DependentUpon>RecuperarPasswordF.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Administrador\Registros\regExPersona.aspx.cs">
+      <DependentUpon>regExPersona.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Administrador\Registros\regExPersona.aspx.designer.cs">
+      <DependentUpon>regExPersona.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Administrador\Registros\regExRestaurante.aspx.cs">
+      <DependentUpon>regExRestaurante.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Administrador\Registros\regExRestaurante.aspx.designer.cs">
+      <DependentUpon>regExRestaurante.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Administrador\Registros\regPersonas.aspx.cs">
+      <DependentUpon>regPersonas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Administrador\Registros\regPersonas.aspx.designer.cs">
+      <DependentUpon>regPersonas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Administrador\Registros\regRestaurante.aspx.cs">
       <DependentUpon>regRestaurante.aspx</DependentUpon>

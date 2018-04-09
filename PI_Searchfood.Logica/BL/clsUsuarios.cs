@@ -10,6 +10,7 @@ namespace PI_Searchfood.Logica.BL
         SqlCommand _SqlCommand = null; //Me permite ejecutar comandos SQL
         SqlDataAdapter _SqlDataAdapter = null; // Me permite adapter conjunto de datos SQL
         string stConexion = string.Empty; //Cadena de Conexion;
+        SqlParameter _SqlParameter = null;
 
         public clsUsuarios() {
             clsConexion obclsConexion = new clsConexion();
@@ -25,7 +26,7 @@ namespace PI_Searchfood.Logica.BL
                 _SqlCommand.CommandType = CommandType.StoredProcedure;
                 _SqlCommand.Parameters.Add(new SqlParameter("@cLogin", obclsUsuarios.stLogin));
                 _SqlCommand.Parameters.Add(new SqlParameter("@cPassword", obclsUsuarios.stPassword));
-                _SqlCommand.Parameters.Add(new SqlParameter("@cPerfil", obclsUsuarios.stPerfil));
+                _SqlCommand.Parameters.Add(new SqlParameter("@cperfcodigo", obclsUsuarios.stPerfil));
                 _SqlCommand.ExecuteNonQuery();
 
                 _SqlDataAdapter = new SqlDataAdapter(_SqlCommand);
@@ -51,7 +52,34 @@ namespace PI_Searchfood.Logica.BL
 
         }
 
+        public int getValidarCodigo()
+        {
+            try
+            {
+                _SqlConnection = new SqlConnection(stConexion);
+                _SqlConnection.Open();
 
+                _SqlCommand = new SqlCommand("spGenerarCodigo", _SqlConnection);
+                _SqlCommand.CommandType = CommandType.StoredProcedure;
+
+                _SqlParameter = new SqlParameter();
+                _SqlParameter.ParameterName = "@codigo";
+                _SqlParameter.Direction = ParameterDirection.Output;
+                _SqlParameter.SqlDbType = SqlDbType.Int;
+                _SqlCommand.Parameters.Add(_SqlParameter);
+                _SqlCommand.ExecuteNonQuery();
+
+                return Convert.ToInt32(_SqlParameter.Value);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally { _SqlConnection.Close(); }
+
+
+        }
 
     }
 }
