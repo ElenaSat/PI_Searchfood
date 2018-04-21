@@ -59,6 +59,7 @@ E:\PI\PI_Searchfood\PI_Searchfood\bin\roslyn\VBCSCompiler.exe.config
 E:\PI\PI_Searchfood\PI_Searchfood\bin\PI_Searchfood.dll.config
 E:\PI\PI_Searchfood\PI_Searchfood\bin\PI_Searchfood.dll
 E:\PI\PI_Searchfood\PI_Searchfood\bin\PI_Searchfood.pdb
+E:\PI\PI_Searchfood\PI_Searchfood\bin\AjaxControlToolkit.dll
 E:\PI\PI_Searchfood\PI_Searchfood\bin\PI_Searchfood.Logica.dll
 E:\PI\PI_Searchfood\PI_Searchfood\bin\PI_Searchfood.Logica.pdb
 E:\PI\PI_Searchfood\PI_Searchfood\obj\Debug\PI_Searchfood.csprojResolveAssemblyReference.cache

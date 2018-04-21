@@ -85,12 +85,12 @@ namespace PI_Searchfood.Views.Administrador.Login {
         protected global::System.Web.UI.WebControls.Button btnAceptar1;
         
         /// <summary>
-        /// Control btnUnirse.
+        /// Control btnirRe.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnUnirse;
+        protected global::System.Web.UI.WebControls.Button btnirRe;
     }
 }

@@ -31,7 +31,8 @@ namespace PI_Searchfood.Views.Administrador.Login
                 if (string.IsNullOrEmpty(txtPassword.Text)) stMensaje += "Ingrese Contraseña, ";
                 if (!string.IsNullOrEmpty(stMensaje)) throw new Exception(stMensaje.TrimEnd(','));
 
-                if (Radio1.Checked==true) {
+                if (Radio1.Checked == true)
+                {
                     //Defino objetos con propiedades
                     Logica.Models.clsUsuarios obclsUsuarios = new Logica.Models.clsUsuarios
                     {
@@ -51,7 +52,8 @@ namespace PI_Searchfood.Views.Administrador.Login
                             cookieEmail.Expires = DateTime.Now.AddDays(2);
                             Response.Cookies.Add(cookieEmail);
                         }
-                        else {
+                        else
+                        {
                             //ELIMINAR COOKIE
                             HttpCookie cookieEmail = new HttpCookie("Email", txtEmail.Text);
                             cookieEmail.Expires = DateTime.Now.AddDays(-1);
@@ -59,17 +61,17 @@ namespace PI_Searchfood.Views.Administrador.Login
 
 
                         }
-                        ViewState["viewLogin"]= txtEmail.Text;
-                        ViewState["viewPassword"]= txtPassword.Text;
+                        ViewState["viewLogin"] = txtEmail.Text;
+                        ViewState["viewPassword"] = txtPassword.Text;
                         //definir sesion
                         Session["sesionLogin"] = txtEmail.Text;
                         Session["sesionPassword"] = txtPassword.Text;
 
                         //Borrar
-                       // Session.RemoveAll();
+                        // Session.RemoveAll();
                         //Session.Remove("sesionlogin"); Nombre de variable a remover
 
-                        Response.Redirect("../../Cliente/indexCliente.aspx?stLogin="+txtEmail.Text+"&stPassword="+txtPassword.Text);//REdicciono
+                        Response.Redirect("../../Cliente/indexCliente.aspx?stLogin=" + txtEmail.Text + "&stPassword=" + txtPassword.Text);//REdicciono
                         //traspaso de datos ?despues enviar parametros se ven
 
                     }
@@ -77,14 +79,16 @@ namespace PI_Searchfood.Views.Administrador.Login
                     {
                         throw new Exception("Usuario ,Password o Tipo de Usuario incorrectos");
                     }
-                }else  if (Radio2.Checked==true){
-
-                //Defino objetos con propiedades
-                Logica.Models.clsUsuarios obclsUsuarios = new Logica.Models.clsUsuarios
+                }
+                else if (Radio2.Checked == true)
                 {
-                    stLogin = txtEmail.Text,
-                    stPassword = txtPassword.Text,
-                    stPerfil = 2
+
+                    //Defino objetos con propiedades
+                    Logica.Models.clsUsuarios obclsUsuarios = new Logica.Models.clsUsuarios
+                    {
+                        stLogin = txtEmail.Text,
+                        stPassword = txtPassword.Text,
+                        stPerfil = 2
                     };
 
                     //Instancia Controlador
@@ -92,26 +96,51 @@ namespace PI_Searchfood.Views.Administrador.Login
                     bool blBandera = obLoginController.getValidarUsuarioController(obclsUsuarios);
                     if (blBandera)
                     {
-                        Response.Redirect("../../Restaurante/indexRestaurante.aspx");//REdicciono
+                        if (chkRecordar.Checked)
+                        {
+                            //DEFINIR COOKIE
+                            HttpCookie cookieEmail = new HttpCookie("Email", txtEmail.Text);
+                            cookieEmail.Expires = DateTime.Now.AddDays(2);
+                            Response.Cookies.Add(cookieEmail);
+                        }
+                        else
+                        {
+                            //ELIMINAR COOKIE
+                            HttpCookie cookieEmail = new HttpCookie("Email", txtEmail.Text);
+                            cookieEmail.Expires = DateTime.Now.AddDays(-1);
+                            Response.Cookies.Add(cookieEmail);
+
+
+                        }
+                        ViewState["viewLogin"] = txtEmail.Text;
+                        ViewState["viewPassword"] = txtPassword.Text;
+                        //definir sesion
+                        Session["sesionLogin"] = txtEmail.Text;
+                        Session["sesionPassword"] = txtPassword.Text;
+
+                        //Borrar
+                        // Session.RemoveAll();
+                        //Session.Remove("sesionlogin"); Nombre de variable a remover
+
+                        Response.Redirect("../../Restaurante/indexRestaurante.aspx?stLogin=" + txtEmail.Text + "&stPassword=" + txtPassword.Text);//REdicciono
+                        //traspaso de datos ?despues enviar parametros se ven
                     }
                     else
                     {
                         throw new Exception("Usuario ,Password o Tipo de Usuario incorrectos");
                     }
-
                 }
-                else
-                {
-                    throw new Exception("Usuario ,Password o Tipo de Usuario incorrectos");
-                }
-            }
-            catch (Exception ex)
+            }catch (Exception ex)
             {
                 ClientScript.RegisterStartupScript(this.GetType(), "Mesaje", "<Script> swal('ERROR!', '" + ex.Message + "!', 'error')</Script>");
             }
         }
 
+        protected void btnirRe_Click(object sender, EventArgs e) {
+            Response.Redirect("~/Views/Administrador/Index/Default.aspx");
 
+
+        }
 
 
     }

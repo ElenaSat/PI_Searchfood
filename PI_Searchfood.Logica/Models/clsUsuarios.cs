@@ -8,5 +8,7 @@
         public string stPassword { get; set; }
 
         public int stPerfil { get; set; }
+
+        public string stImagen { get; set; }
     }
 }

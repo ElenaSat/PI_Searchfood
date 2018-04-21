@@ -161,9 +161,9 @@ namespace PI_Searchfood.Logica.BL
 
                 _SqlCommand.Parameters.Add(new SqlParameter("@ciudCodigo", obclstbRestaurante.clstbCiudad.ciudCodigo ));
                 _SqlCommand.Parameters.Add(new SqlParameter("@usuaCodigo",obclstbRestaurante.clsUsuarios.inCodigo ));
-                _SqlCommand.Parameters.Add(new SqlParameter("@restCorreo", obclstbRestaurante.strrestcorreo));
-
+                _SqlCommand.Parameters.Add(new SqlParameter("@restCorreo", obclstbRestaurante.clsUsuarios.stLogin));
                 _SqlCommand.Parameters.Add(new SqlParameter("@restContraseña",obclstbRestaurante.clsUsuarios.stPassword ));
+                _SqlCommand.Parameters.Add(new SqlParameter("@usuaImagen", obclstbRestaurante.clsUsuarios.stImagen));
                 _SqlCommand.Parameters.Add(new SqlParameter("@inOpcion", inOpcion));
 
 
@@ -209,7 +209,29 @@ namespace PI_Searchfood.Logica.BL
 
         }
 
+        public DataSet getConsultarRestaurantesImg(string stcCorreo)
+        {
+            try
+            {
+                DataSet dsConsulta = new DataSet();
+                _SqlConnection = new SqlConnection(stConexion);
+                _SqlConnection.Open();
 
+                _SqlCommand = new SqlCommand("spConsultarRestaurantesImg", _SqlConnection);
+                _SqlCommand.CommandType = CommandType.StoredProcedure;
+                _SqlCommand.Parameters.Add(new SqlParameter("@cCorreo", stcCorreo));
+                _SqlCommand.ExecuteNonQuery();
+
+                _SqlDataAdapter = new SqlDataAdapter(_SqlCommand);
+                _SqlDataAdapter.Fill(dsConsulta);
+                return dsConsulta;
+
+            }
+            catch (Exception ex) { throw ex; }
+            finally { _SqlConnection.Close(); }
+
+
+        }
 
 
 

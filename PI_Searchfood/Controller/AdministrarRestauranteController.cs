@@ -16,6 +16,17 @@ namespace PI_Searchfood.Controller
             catch (Exception ex) { throw ex; }
         }
 
+        public DataSet getConsultarAdministrarRestauranteControllerImg(string stcCorreo)
+        {
+            try
+            {
+                PI_Searchfood.Logica.BL.clsAdministracionEmpresas obclsAdministracionEmpresas = new Logica.BL.clsAdministracionEmpresas();
+
+                return obclsAdministracionEmpresas.getConsultarRestaurantesImg(stcCorreo);
+
+            }
+            catch (Exception ex) { throw ex; }
+        }
         /// <summary>
         /// ADMINISTRAR PERSONAS
         /// </summary>

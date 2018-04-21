@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Data;
 using System.Web.UI.WebControls;
+using System.IO;
 
 namespace PI_Searchfood.Views.Administrador.Registros
 {
     public partial class regExRestaurante : System.Web.UI.Page
     {
+        public string stRuta = string.Empty, stRutaDestino = string.Empty;
 
         void getRestaurante()
         {
@@ -23,10 +25,35 @@ namespace PI_Searchfood.Views.Administrador.Registros
             catch (Exception ex) { ClientScript.RegisterStartupScript(this.GetType(), "Mesaje", "<Script> swal('ERROR!', '" + ex.Message + "!', 'error')</Script>"); }
 
         }
+        void getImagenFu()
+        {
+            if (fuImagen.HasFile)
+            {
+                if (Path.GetExtension(fuImagen.FileName).Equals("png"))
+                    throw new Exception("Solo se permiten formatos .png");
 
+                stRuta = Server.MapPath(@"~\tmp\") + fuImagen.FileName;//RUTA TEMPORAL
+                fuImagen.PostedFile.SaveAs(stRuta); //GUARDAR EL ARCHIVO DENTRO DEL PROYECTO
+                stRutaDestino = Server.MapPath(@"~\Images\Restaurantes\") + txtCorreo.Text + Path.GetExtension(fuImagen.FileName); //RUTA DE DESTINO DONDE QUEDAN LAS IMAGENES
+
+                if (File.Exists(stRutaDestino))
+                {
+                    File.SetAttributes(stRutaDestino, FileAttributes.Normal);
+                    File.Delete(stRutaDestino);
+                }
+
+                File.Copy(stRuta, stRutaDestino);
+                File.SetAttributes(stRuta, FileAttributes.Normal);
+                File.Delete(stRuta);
+
+            }
+
+        }
         void getLimpiar()
         {
-            lbOpcion.Text = lbCodigoRes.Text = txtNit.Text = txtNombre.Text = txtDireccion.Text = txtCelular.Text = txtCorreo.Text = txtContraseña.Text = txtLatitud.Text = txtLongitud.Text = txtArea.Text = string.Empty;
+            lbOpcion.Text = lbCodigoRes.Text = txtNit.Text = txtNombre.Text = txtDireccion.Text = txtCelular.Text = txtCorreo.Text = txtContraseña.Text  = txtArea.Text = string.Empty;
+            txtLat.Text = "3.478617218356569";
+            txtLong.Text = "-76.51652991771698";
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -52,8 +79,8 @@ namespace PI_Searchfood.Views.Administrador.Registros
                 if (string.IsNullOrEmpty(txtDireccion.Text)) stMensaje += "Ingrese Dirección, ";
                 if (string.IsNullOrEmpty(txtCelular.Text)) stMensaje += "Ingrese Celular, ";
                 if (string.IsNullOrEmpty(txtArea.Text)) stMensaje += "Ingrese Descripción, ";
-                if (string.IsNullOrEmpty(txtLatitud.Text)) stMensaje += "Ingrese Latitud, ";
-                if (string.IsNullOrEmpty(txtLongitud.Text)) stMensaje += "Ingrese Longitud, ";
+                if (string.IsNullOrEmpty(txtLat.Text)) stMensaje += "Ingrese Latitud, ";
+                if (string.IsNullOrEmpty(txtLong.Text)) stMensaje += "Ingrese Longitud, ";
 
                 if (!string.IsNullOrEmpty(stMensaje)) throw new Exception(stMensaje.TrimEnd(','));
 
@@ -68,8 +95,8 @@ namespace PI_Searchfood.Views.Administrador.Registros
                             longrestCodigo = Convert.ToInt64(txtNit.Text),
                             strrestNombre = txtNombre.Text,
                             strrestDireccion = txtDireccion.Text,
-                            strrestLatitud = txtLatitud.Text,
-                            strrestLongitud = txtLongitud.Text,
+                            strrestLatitud = txtLat.Text,
+                            strrestLongitud = txtLong.Text,
                             strrestTelefono = txtCelular.Text,
                             strrestDescripcion = txtArea.Text,
                             strrestcorreo = txtCorreo.Text,
@@ -78,7 +105,9 @@ namespace PI_Searchfood.Views.Administrador.Registros
                             {
 
                                 inCodigo = obclsAdministracionEmpresas.getValidarCodigoRestaurante(),
-                                stPassword = txtContraseña.Text
+                                stLogin=txtCorreo.Text,
+                                stPassword = txtContraseña.Text,
+                                stImagen=stRutaDestino
                             }
                                ,
                             clstbCiudad = new Logica.Models.clstbCiudad

@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Data;
 using System.Web.UI.WebControls;
+using System.IO;
 
 namespace PI_Searchfood.Views.Administrador.Registros
 {
     public partial class regPersonas : System.Web.UI.Page
     {
-
+        public string stRuta = string.Empty, stRutaDestino = string.Empty;
         void getPersonas()
         {
             try
@@ -39,8 +40,30 @@ namespace PI_Searchfood.Views.Administrador.Registros
             lbOpcion.Text = lbCodigoUs.Text = txtIdentificacion.Text = txtNombre.Text = txtApellido.Text = txtCelular.Text = txtCorreo.Text = txtContraseña.Text = txtDireccion.Text = string.Empty;
 
         }
+        void getImagenFu()
+        {
+            if (fuImagen.HasFile)
+            {
+                if (Path.GetExtension(fuImagen.FileName).Equals("png"))
+                    throw new Exception("Solo se permiten formatos .png");
 
+                stRuta = Server.MapPath(@"~\tmp\") + fuImagen.FileName;//RUTA TEMPORAL
+                fuImagen.PostedFile.SaveAs(stRuta); //GUARDAR EL ARCHIVO DENTRO DEL PROYECTO
+                stRutaDestino = Server.MapPath(@"~\Images\Personas\") + txtCorreo.Text + Path.GetExtension(fuImagen.FileName); //RUTA DE DESTINO DONDE QUEDAN LAS IMAGENES
 
+                if (File.Exists(stRutaDestino))
+                {
+                    File.SetAttributes(stRutaDestino, FileAttributes.Normal);
+                    File.Delete(stRutaDestino);
+                }
+
+                File.Copy(stRuta, stRutaDestino);
+                File.SetAttributes(stRuta, FileAttributes.Normal);
+                File.Delete(stRuta);
+
+            }
+
+        }
         /// <summary>
         /// OBTINE CONSULTA DE PERSONAS
         /// </summary>
@@ -62,21 +85,26 @@ namespace PI_Searchfood.Views.Administrador.Registros
             try
             {
                 string stMensaje = string.Empty;
-                if(string.IsNullOrEmpty(txtNombre.Text)) stMensaje += "Ingrese Nombre, ";
+                if (string.IsNullOrEmpty(txtNombre.Text)) stMensaje += "Ingrese Nombre, ";
                 if (string.IsNullOrEmpty(txtApellido.Text)) stMensaje += "Ingrese Apellido, ";
                 if (string.IsNullOrEmpty(txtIdentificacion.Text)) stMensaje += "Ingrese Identificación, ";
                 if (string.IsNullOrEmpty(txtCorreo.Text)) stMensaje += "Ingrese Email, ";
                 if (string.IsNullOrEmpty(txtContraseña.Text)) stMensaje += "Ingrese Contraseña, ";
                 if (string.IsNullOrEmpty(txtDireccion.Text)) stMensaje += "Ingrese Dirección, ";
-                if(string.IsNullOrEmpty(txtCelular.Text)) stMensaje += "Ingrese Celular, ";
+                if (string.IsNullOrEmpty(txtCelular.Text)) stMensaje += "Ingrese Celular, ";
 
                 if (!string.IsNullOrEmpty(stMensaje)) throw new Exception(stMensaje.TrimEnd(','));
 
-                if (!string.IsNullOrEmpty(lbOpcion.Text)) 
+                if (!string.IsNullOrEmpty(lbOpcion.Text))
                 {
+
                     Logica.BL.clsUsuarios obclsUsuarios = new Logica.BL.clsUsuarios();
+
                     if (lbOpcion.Text.Equals("1"))
                     {
+                        //Imagen Verificar
+                        getImagenFu();
+
                         Logica.Models.clstbPersona obclstbPersona = new Logica.Models.clstbPersona
                         {
                             longpersIdentificacion = Convert.ToInt64(txtIdentificacion.Text),
@@ -90,11 +118,14 @@ namespace PI_Searchfood.Views.Administrador.Registros
                                 longeneCodigo = Convert.ToInt64(ddlGenero.SelectedValue)
                             },
 
+
+
                             clsUsuarios = new Logica.Models.clsUsuarios
                             {
 
                                 inCodigo = obclsUsuarios.getValidarCodigo(),
-                                stPassword = txtContraseña.Text
+                                stPassword = txtContraseña.Text,
+                                stImagen = stRutaDestino
                             }
                                ,
                             clstbCiudad = new Logica.Models.clstbCiudad
@@ -111,6 +142,9 @@ namespace PI_Searchfood.Views.Administrador.Registros
                     }
                     else if (lbOpcion.Text.Equals("2"))
                     {
+                        //Imagen
+                        getImagenFu();
+
                         Logica.Models.clstbPersona obclstbPersonaE = new Logica.Models.clstbPersona
                         {
                             longpersIdentificacion = Convert.ToInt64(txtIdentificacion.Text),
@@ -128,9 +162,12 @@ namespace PI_Searchfood.Views.Administrador.Registros
                             {
 
                                 inCodigo = Convert.ToInt32(lbCodigoUs.Text),
-                                stPassword = txtContraseña.Text
+                                stPassword = txtContraseña.Text,
+                                stImagen = stRutaDestino
+
+
                             }
-                        ,
+                            ,
                             clstbCiudad = new Logica.Models.clstbCiudad
                             {
                                 ciudCodigo = Convert.ToInt32(ddlCiudad.SelectedValue)
@@ -146,8 +183,6 @@ namespace PI_Searchfood.Views.Administrador.Registros
 
 
                 }
-
-
             }
             catch (Exception ex) { ClientScript.RegisterStartupScript(this.GetType(), "Mesaje", "<Script> swal('ERROR!', '" + ex.Message + "!', 'error')</Script>"); }
         }
@@ -215,14 +250,14 @@ namespace PI_Searchfood.Views.Administrador.Registros
 
                     ddlDepartamento.SelectedValue = dsConsultaDP.Tables[0].Rows[0]["depaCodigo"].ToString();
                     ddlDepartamento_SelectedIndexChanged(ddlDepartamento, new EventArgs());
-                    
+
                     ddlCiudad.SelectedValue = dsConsultaDP.Tables[0].Rows[0]["ciudCodigo"].ToString();
 
-                    int codigoGU= Convert.ToInt32( gvwDatos.Rows[inIndice].Cells[6].Text);
+                    int codigoGU = Convert.ToInt32(gvwDatos.Rows[inIndice].Cells[6].Text);
                     DataSet dsConsultarGU = obAdministrarPersonaController.getConsultarGUController(codigoGU);
                     ddlGenero.SelectedValue = dsConsultarGU.Tables[0].Rows[0]["geneCodigo"].ToString();
                     ddlGenero_SelectedIndexChanged(ddlGenero, new EventArgs());
-                    
+
                     getPersonas();
 
                 }
@@ -248,7 +283,8 @@ namespace PI_Searchfood.Views.Administrador.Registros
                         {
 
                             inCodigo = Convert.ToInt32(lbCodigoUs.Text),
-                            stPassword = string.Empty
+                            stPassword = string.Empty,
+                            stImagen = string.Empty
                         }
                    ,
                         clstbCiudad = new Logica.Models.clstbCiudad
@@ -275,7 +311,7 @@ namespace PI_Searchfood.Views.Administrador.Registros
             getLimpiar();
         }
 
-       
+
 
 
     }

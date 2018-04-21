@@ -30,7 +30,6 @@ namespace PI_Searchfood.Logica.BL
 
                 _SqlCommand = new SqlCommand("spConsultarPersona", _SqlConnection);
                 _SqlCommand.CommandType = CommandType.StoredProcedure;
-
                 _SqlCommand.ExecuteNonQuery();
 
                 _SqlDataAdapter = new SqlDataAdapter(_SqlCommand);
@@ -39,6 +38,29 @@ namespace PI_Searchfood.Logica.BL
 
             }
             catch (Exception ex){throw ex;} finally { _SqlConnection.Close(); }
+
+
+        }
+        public DataSet getConsultarPersonaImg(string stcCorreo)
+        {
+            try
+            {
+                DataSet dsConsulta = new DataSet();
+                _SqlConnection = new SqlConnection(stConexion);
+                _SqlConnection.Open();
+
+                _SqlCommand = new SqlCommand("spConsultarPersonaImg", _SqlConnection);
+                _SqlCommand.CommandType = CommandType.StoredProcedure;
+                _SqlCommand.Parameters.Add(new SqlParameter("@cCorreo", stcCorreo));
+                _SqlCommand.ExecuteNonQuery();
+
+                _SqlDataAdapter = new SqlDataAdapter(_SqlCommand);
+                _SqlDataAdapter.Fill(dsConsulta);
+                return dsConsulta;
+
+            }
+            catch (Exception ex) { throw ex; }
+            finally { _SqlConnection.Close(); }
 
 
         }
@@ -218,6 +240,7 @@ namespace PI_Searchfood.Logica.BL
                 _SqlCommand.Parameters.Add(new SqlParameter("@ciudCodigo", obclstbPersona.clstbCiudad.ciudCodigo));
                 _SqlCommand.Parameters.Add(new SqlParameter("@usuaCodigo", obclstbPersona.clsUsuarios.inCodigo));
                 _SqlCommand.Parameters.Add(new SqlParameter("@usuacontraseña", obclstbPersona.clsUsuarios.stPassword));
+                _SqlCommand.Parameters.Add(new SqlParameter("@usuaImagen", obclstbPersona.clsUsuarios.stImagen));
                 _SqlCommand.Parameters.Add(new SqlParameter("@inOpcion", inOpcion));
 
                 

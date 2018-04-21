@@ -1,10 +1,42 @@
 ﻿using System;
 using System.Data;
+using System.IO;
 
 namespace PI_Searchfood.Views.Administrador.Registros
 {
     public partial class regExPersona : System.Web.UI.Page
     {
+        public string stRuta = string.Empty, stRutaDestino = string.Empty;
+        void getImagenFu()
+        {
+            if (fuImagen.HasFile)
+            {
+                if (Path.GetExtension(fuImagen.FileName).Equals("png"))
+                    throw new Exception("Solo se permiten formatos .png");
+
+                stRuta = Server.MapPath(@"~\tmp\") + fuImagen.FileName;//RUTA TEMPORAL
+                fuImagen.PostedFile.SaveAs(stRuta); //GUARDAR EL ARCHIVO DENTRO DEL PROYECTO
+                stRutaDestino = Server.MapPath(@"~\Images\Personas\") + txtCorreo.Text + Path.GetExtension(fuImagen.FileName); //RUTA DE DESTINO DONDE QUEDAN LAS IMAGENES
+
+                if (File.Exists(stRutaDestino))
+                {
+                    File.SetAttributes(stRutaDestino, FileAttributes.Normal);
+                    File.Delete(stRutaDestino);
+                }
+
+                File.Copy(stRuta, stRutaDestino);
+                File.SetAttributes(stRuta, FileAttributes.Normal);
+                File.Delete(stRuta);
+
+            }
+
+        }
+        private void getLimpiar()
+        {
+            lbOpcion.Text = txtIdentificacion.Text = txtNombre.Text = txtApellido.Text = txtCelular.Text = txtCorreo.Text = txtContraseña.Text = txtDireccion.Text = string.Empty;
+
+
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -47,6 +79,8 @@ namespace PI_Searchfood.Views.Administrador.Registros
                 if (!string.IsNullOrEmpty(stMensaje)) throw new Exception(stMensaje.TrimEnd(','));
 
                 if (string.IsNullOrEmpty(lbOpcion.Text)) lbOpcion.Text = "1";
+                //Validar Imagen
+                getImagenFu();
                 Logica.BL.clsUsuarios obclsUsuarios = new Logica.BL.clsUsuarios();
                 Logica.Models.clstbPersona obclstbPersona = new Logica.Models.clstbPersona
                 {
@@ -65,7 +99,10 @@ namespace PI_Searchfood.Views.Administrador.Registros
                     {
 
                         inCodigo = obclsUsuarios.getValidarCodigo(),
-                        stPassword = txtContraseña.Text
+                        stLogin=txtCorreo.Text,
+                        stPassword = txtContraseña.Text,
+                        stImagen=stRutaDestino
+
                     }
                     ,
                     clstbCiudad = new Logica.Models.clstbCiudad
@@ -116,18 +153,16 @@ namespace PI_Searchfood.Views.Administrador.Registros
             int inCodigo = Convert.ToInt32(ddlCiudad.SelectedValue);
 
         }
+        protected void ddlGenero_SelectedIndexChanged(object sender, EventArgs e)
+        {
+        }
 
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
             getLimpiar();
         }
 
-        private void getLimpiar()
-        {
-            lbOpcion.Text = txtIdentificacion.Text = txtNombre.Text = txtApellido.Text = txtCelular.Text = txtCorreo.Text = txtContraseña.Text = txtDireccion.Text = string.Empty;
-
-
-        }
+       
 
             }
 }

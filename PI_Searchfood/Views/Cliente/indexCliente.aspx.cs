@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -31,6 +32,24 @@ namespace PI_Searchfood.Views.Cliente
                     Response.Redirect("../Administrador/Login/frmLogin.aspx");
                     //Validar por todos los formularios
                 }
+                Controller.AdministrarPersonaController obAdministrarPersonaController = new Controller.AdministrarPersonaController();
+                DataSet dsConsulta = obAdministrarPersonaController.getConsultarAdministrarPersonasControllerImg(stLogin);
+                string stNombreImagen = string.Empty;
+                if (dsConsulta.Tables[0].Rows[0]["UsuaImagen"].ToString().Equals(""))
+                {
+                    stNombreImagen = "Images/DfImages/defualt.png";
+                }
+                else
+                {
+                    dsConsulta = obAdministrarPersonaController.getConsultarAdministrarPersonasControllerImg(stLogin);
+                    string[] stNombre = dsConsulta.Tables[0].Rows[0]["UsuaImagen"].ToString().Split('\\');
+                    stNombreImagen = "Images/Personas/" + stNombre[stNombre.Length - 1].ToString();
+                }
+
+                //ALT +126
+                imgUsuario.ImageUrl = "~/" + stNombreImagen;
+
+
 
             }
         }

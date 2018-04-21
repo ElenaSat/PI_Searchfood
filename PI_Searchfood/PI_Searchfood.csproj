@@ -44,6 +44,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=18.1.0.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <HintPath>..\packages\AjaxControlToolkit.18.1.0\lib\net40\AjaxControlToolkit.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -66,6 +69,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Images\DfImages\defualt.png" />
+    <Content Include="js\locationpicker.jquery.js" />
     <Content Include="packages.config" />
     <Content Include="obj\Debug\CoreCompileInputs.cache" />
     <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
@@ -161,6 +166,7 @@
     <Content Include="vendor\jquery\jquery.min.js" />
     <Content Include="vendor\jquery\jquery.slim.js" />
     <Content Include="vendor\jquery\jquery.slim.min.js" />
+    <Content Include="Views\Administrador\CrearCuenta\CrearCuenta.aspx" />
     <Content Include="Views\Administrador\Images\delete.png" />
     <Content Include="Views\Administrador\Images\edit.png" />
     <Content Include="Views\Administrador\Images\fondo.gif" />
@@ -205,6 +211,13 @@
     </Compile>
     <Compile Include="Resources\Template\Restaurantes.Master.designer.cs">
       <DependentUpon>Restaurantes.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Administrador\CrearCuenta\CrearCuenta.aspx.cs">
+      <DependentUpon>CrearCuenta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Administrador\CrearCuenta\CrearCuenta.aspx.designer.cs">
+      <DependentUpon>CrearCuenta.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Administrador\Index\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -271,7 +284,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Images\Personas\" />
+    <Folder Include="Images\Restaurantes\" />
     <Folder Include="obj\Debug\TempPE\" />
+    <Folder Include="tmp\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PI_Searchfood.Logica\PI_Searchfood.Logica.csproj">
