@@ -67,7 +67,7 @@
                         Únete y obten muchos beneficios.
                     </p>
                     <asp:Button ID="btnirRe" runat="server" CssClass="btn btn-primary btn-block" Text="¡UNIRSE!" OnClick="btnirRe_Click" />
-                                    
+
                 </div>
             </div>
         </div>

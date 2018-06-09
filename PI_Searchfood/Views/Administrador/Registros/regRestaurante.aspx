@@ -1,9 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Resources/Template/Administrador.Master" AutoEventWireup="true" CodeBehind="regRestaurante.aspx.cs" Inherits="PI_Searchfood.Views.Administrador.Registros.regRestaurante" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="header" runat="server">
-   
-
-
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" runat="server">
     <div class="card mx-auto mt-5">
@@ -44,7 +41,6 @@
                         <div class="col-md-6">
                             <asp:Label runat="server" ID="lbContraseña" Text="Contraseña"></asp:Label>
                             <asp:TextBox runat="server" ID="txtContraseña" CssClass="form-control" TextMode="Password"> </asp:TextBox>
-
                         </div>
                         <div class="col-md-6">
                             <asp:Label runat="server" ID="lbConfirmarPassword" Text="Confirmar Contraseña"> </asp:Label>
@@ -52,7 +48,20 @@
                             <asp:RequiredFieldValidator ID="rfvConfirmarPassword" runat="server" ErrorMessage="Campo Requerido" ControlToValidate="txtConfirmarPassword" ForeColor="Red" ValidationGroup="ValidarCuenta"></asp:RequiredFieldValidator>
                             <asp:CompareValidator runat="server" ID="cvConfirmarPassword" ErrorMessage="Contraseña no coinciden" ControlToValidate="txtConfirmarPassword" ControlToCompare="txtContraseña" ForeColor="Red"></asp:CompareValidator>
                         </div>
+                        <div class="col-md-6">
+                            <div class="form-check">
+                                <label class="form-check-label" />
+                                <asp:CheckBox ID="chkSP" runat="server" Text="Sede Principal" OnCheckedChanged="chkSP_CheckedChanged" AutoPostBack="true"/>
+                                <br/>
+                                <asp:CheckBox ID="chkSC" runat="server" Text="Sede Sucursal" OnCheckedChanged="chkSC_CheckedChanged" AutoPostBack="true"/>
 
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <asp:Label runat="server" ID="lbRestPrin" Text="Restaurante Principal"></asp:Label>
+                            <asp:DropDownList runat="server" ID="ddlRestaurantePrin" CssClass="form-control form-control-lg" AutoPostBack="true"></asp:DropDownList>
+
+                        </div>
                         <div class="col-md-12">
                             <asp:Label runat="server" ID="lbCelular" Text="Celular"></asp:Label>
                             <asp:TextBox runat="server" ID="txtCelular" CssClass="form-control"> </asp:TextBox>

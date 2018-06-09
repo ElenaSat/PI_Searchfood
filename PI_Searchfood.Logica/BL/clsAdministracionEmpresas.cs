@@ -163,10 +163,12 @@ namespace PI_Searchfood.Logica.BL
                 _SqlCommand.Parameters.Add(new SqlParameter("@usuaCodigo",obclstbRestaurante.clsUsuarios.inCodigo ));
                 _SqlCommand.Parameters.Add(new SqlParameter("@restCorreo", obclstbRestaurante.clsUsuarios.stLogin));
                 _SqlCommand.Parameters.Add(new SqlParameter("@restContraseña",obclstbRestaurante.clsUsuarios.stPassword ));
+
+                _SqlCommand.Parameters.Add(new SqlParameter("@restPrincipal", obclstbRestaurante.strrestPrincipal));
+                _SqlCommand.Parameters.Add(new SqlParameter("@restSucursal", obclstbRestaurante.strrestSucursal));
                 _SqlCommand.Parameters.Add(new SqlParameter("@usuaImagen", obclstbRestaurante.clsUsuarios.stImagen));
                 _SqlCommand.Parameters.Add(new SqlParameter("@inOpcion", inOpcion));
-
-
+                
                 _SqlParameter = new SqlParameter();
                 _SqlParameter.ParameterName = "@cMensaje";
                 _SqlParameter.Direction = ParameterDirection.Output;
@@ -209,6 +211,32 @@ namespace PI_Searchfood.Logica.BL
 
         }
 
+        public DataSet getConsultarCodigoRestaurante(string strCorreo)
+        {
+            try
+            {
+                DataSet dsConsultarPD = new DataSet();
+                _SqlConnection = new SqlConnection(stConexion);
+                _SqlConnection.Open();
+
+                _SqlCommand = new SqlCommand("spConsultarCodigo", _SqlConnection);
+                _SqlCommand.Parameters.Add(new SqlParameter("@strCorreo", strCorreo));
+                _SqlCommand.CommandType = CommandType.StoredProcedure;
+
+                _SqlCommand.ExecuteNonQuery();
+
+                _SqlDataAdapter = new SqlDataAdapter(_SqlCommand);
+                _SqlDataAdapter.Fill(dsConsultarPD);
+                return dsConsultarPD;
+
+            }
+            catch (Exception ex) { throw ex; }
+            finally { _SqlConnection.Close(); }
+
+
+
+        }
+
         public DataSet getConsultarRestaurantesImg(string stcCorreo)
         {
             try
@@ -233,6 +261,51 @@ namespace PI_Searchfood.Logica.BL
 
         }
 
+        public DataSet getConsultarRestaurantesPrin() {
+            try
+            {
+                DataSet dsConsulta = new DataSet();
+                _SqlConnection = new SqlConnection(stConexion);
+                _SqlConnection.Open();
+
+                _SqlCommand = new SqlCommand("spConsultarEmpresaPri", _SqlConnection);
+                _SqlCommand.CommandType = CommandType.StoredProcedure;
+                _SqlCommand.ExecuteNonQuery();
+
+                _SqlDataAdapter = new SqlDataAdapter(_SqlCommand);
+                _SqlDataAdapter.Fill(dsConsulta);
+                return dsConsulta;
+
+            }
+            catch (Exception ex) { throw ex; }
+            finally { _SqlConnection.Close(); }
+
+
+        }
+
+        public DataSet getConsultarMisSucursales(long lonCodigoSucursal) {
+            try
+            {
+                DataSet dsConsulta = new DataSet();
+                _SqlConnection = new SqlConnection(stConexion);
+                _SqlConnection.Open();
+
+                _SqlCommand = new SqlCommand("spConsultarMisSucursales", _SqlConnection);
+                _SqlCommand.CommandType = CommandType.StoredProcedure;
+                _SqlCommand.Parameters.Add(new SqlParameter("@strCodigo", lonCodigoSucursal));
+                _SqlCommand.ExecuteNonQuery();
+
+                _SqlDataAdapter = new SqlDataAdapter(_SqlCommand);
+                _SqlDataAdapter.Fill(dsConsulta);
+                return dsConsulta;
+
+            }
+            catch (Exception ex) { throw ex; }
+            finally { _SqlConnection.Close(); }
+
+
+
+        }
 
 
 

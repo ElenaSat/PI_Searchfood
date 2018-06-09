@@ -16,6 +16,28 @@ namespace PI_Searchfood.Controller
             catch (Exception ex) { throw ex; }
         }
 
+        public DataSet getConsultarRestaurantePrinController()
+        {
+            try
+            {
+                PI_Searchfood.Logica.BL.clsAdministracionEmpresas obclsAdministracionEmpresas = new Logica.BL.clsAdministracionEmpresas();
+                return obclsAdministracionEmpresas.getConsultarRestaurantesPrin();
+
+            }
+            catch (Exception ex) { throw ex; }
+        }
+
+        public DataSet getConsultarRestauranteMisSucursalesController(long longCodigoSucursal)
+        {
+            try
+            {
+                PI_Searchfood.Logica.BL.clsAdministracionEmpresas obclsAdministracionEmpresas = new Logica.BL.clsAdministracionEmpresas();
+                return obclsAdministracionEmpresas.getConsultarMisSucursales(longCodigoSucursal);
+
+            }
+            catch (Exception ex) { throw ex; }
+        }
+
         public DataSet getConsultarAdministrarRestauranteControllerImg(string stcCorreo)
         {
             try
@@ -80,6 +102,17 @@ namespace PI_Searchfood.Controller
             {
                 PI_Searchfood.Logica.BL.clsAdministracionEmpresas obclsAdministracionEmpresas = new Logica.BL.clsAdministracionEmpresas();
                 return obclsAdministracionEmpresas.getConsultarPDR(inCodigoCiudad);
+
+            }
+            catch (Exception ex) { throw ex; }
+        }
+
+        public DataSet getConsultarRestautanteCodigo(string strCorreo)
+        {
+            try
+            {
+                PI_Searchfood.Logica.BL.clsAdministracionEmpresas obclsAdministracionEmpresas = new Logica.BL.clsAdministracionEmpresas();
+                return obclsAdministracionEmpresas.getConsultarCodigoRestaurante(strCorreo);
 
             }
             catch (Exception ex) { throw ex; }

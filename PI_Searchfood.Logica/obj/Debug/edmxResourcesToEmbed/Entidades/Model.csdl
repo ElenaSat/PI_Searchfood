@@ -1,0 +1,416 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BD_SEARCHFOODModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tbbonus">
+    <Key>
+      <PropertyRef Name="bonuCodigo" />
+    </Key>
+    <Property Name="bonuCodigo" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="restCodigo" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="persIdentificacion" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="bonuDescuento" Type="Decimal" Precision="3" Scale="0" />
+    <NavigationProperty Name="tbrestaurante" Relationship="Self.Fk_BONUS" FromRole="tbbonus" ToRole="tbrestaurante" />
+    <NavigationProperty Name="tbpersona" Relationship="Self.Fk_BONUSS" FromRole="tbbonus" ToRole="tbpersona" />
+  </EntityType>
+  <EntityType Name="tbCategorias">
+    <Key>
+      <PropertyRef Name="cateCodigo" />
+    </Key>
+    <Property Name="cateCodigo" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="cateDescripcion" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="tbComida" Relationship="Self.Fk_CATEGORIA" FromRole="tbCategorias" ToRole="tbComida" />
+  </EntityType>
+  <EntityType Name="tbciudad">
+    <Key>
+      <PropertyRef Name="ciudCodigo" />
+    </Key>
+    <Property Name="ciudCodigo" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="ciudNombre" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="depaCodigo" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <NavigationProperty Name="tbpersona" Relationship="Self.Fk_CIUDAD_PERSONA" FromRole="tbciudad" ToRole="tbpersona" />
+    <NavigationProperty Name="tbdepartamento" Relationship="Self.Fk_DEPCIUDAD" FromRole="tbciudad" ToRole="tbdepartamento" />
+  </EntityType>
+  <EntityType Name="tbComida">
+    <Key>
+      <PropertyRef Name="comiCodigo" />
+    </Key>
+    <Property Name="comiCodigo" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="cateCodigo" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="restcodigo" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="comiValor" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="comiDescripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="comiRutaImagen" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tbCategorias" Relationship="Self.Fk_CATEGORIA" FromRole="tbComida" ToRole="tbCategorias" />
+    <NavigationProperty Name="tbrestaurante" Relationship="Self.Fk_COMIDA" FromRole="tbComida" ToRole="tbrestaurante" />
+    <NavigationProperty Name="tbreservasDetalle" Relationship="Self.Fk_RESECOM" FromRole="tbComida" ToRole="tbreservasDetalle" />
+  </EntityType>
+  <EntityType Name="tbdepartamento">
+    <Key>
+      <PropertyRef Name="depaCodigo" />
+    </Key>
+    <Property Name="depaCodigo" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="depaCombre" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="paisCodigo" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <NavigationProperty Name="tbciudad" Relationship="Self.Fk_DEPCIUDAD" FromRole="tbdepartamento" ToRole="tbciudad" />
+    <NavigationProperty Name="tbpais" Relationship="Self.Fk_PAISDEP" FromRole="tbdepartamento" ToRole="tbpais" />
+  </EntityType>
+  <EntityType Name="tbgenero">
+    <Key>
+      <PropertyRef Name="geneCodigo" />
+    </Key>
+    <Property Name="geneCodigo" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="geneDescripcion" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="tbpersona" Relationship="Self.Fk_GENERO_PERSONA" FromRole="tbgenero" ToRole="tbpersona" />
+  </EntityType>
+  <EntityType Name="tbpais">
+    <Key>
+      <PropertyRef Name="paisCodigo" />
+    </Key>
+    <Property Name="paisCodigo" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="paisNombre" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="tbdepartamento" Relationship="Self.Fk_PAISDEP" FromRole="tbpais" ToRole="tbdepartamento" />
+  </EntityType>
+  <EntityType Name="tbperfiles">
+    <Key>
+      <PropertyRef Name="perfCodigo" />
+    </Key>
+    <Property Name="perfCodigo" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="perfDescribcion" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="tbUsuarios" Relationship="Self.Fk_USUARIOS" FromRole="tbperfiles" ToRole="tbUsuarios" />
+  </EntityType>
+  <EntityType Name="tbpersona">
+    <Key>
+      <PropertyRef Name="persIdentificacion" />
+    </Key>
+    <Property Name="persIdentificacion" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="persNombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="persApellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="persDireccion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="persCorreo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="persCelular" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="geneCodigo" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="ciudCodigo" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="usuaCodigo" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <NavigationProperty Name="tbbonus" Relationship="Self.Fk_BONUSS" FromRole="tbpersona" ToRole="tbbonus" />
+    <NavigationProperty Name="tbciudad" Relationship="Self.Fk_CIUDAD_PERSONA" FromRole="tbpersona" ToRole="tbciudad" />
+    <NavigationProperty Name="tbgenero" Relationship="Self.Fk_GENERO_PERSONA" FromRole="tbpersona" ToRole="tbgenero" />
+    <NavigationProperty Name="tbUsuarios" Relationship="Self.Fk_CODIGO_USUARIO" FromRole="tbpersona" ToRole="tbUsuarios" />
+    <NavigationProperty Name="tbreservas" Relationship="Self.Fk_RESERVAS" FromRole="tbpersona" ToRole="tbreservas" />
+  </EntityType>
+  <EntityType Name="tbreservas">
+    <Key>
+      <PropertyRef Name="reseCodigo" />
+    </Key>
+    <Property Name="restCodigo" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="persIdentificacion" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="reseCodigo" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="reseFecha" Type="DateTime" Precision="3" />
+    <Property Name="estaCodigo" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="reseTotal" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="reseImpuesto" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="reseObservacion" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tbpersona" Relationship="Self.Fk_RESERVAS" FromRole="tbreservas" ToRole="tbpersona" />
+    <NavigationProperty Name="tbrestaurante" Relationship="Self.Fk_RESERVA" FromRole="tbreservas" ToRole="tbrestaurante" />
+  </EntityType>
+  <EntityType Name="tbreservasDetalle">
+    <Key>
+      <PropertyRef Name="redeCodigo" />
+    </Key>
+    <Property Name="redeCodigo" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="restCodigo" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="comiCodigo" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="redeCantidad" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="redeSubtotal" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <NavigationProperty Name="tbComida" Relationship="Self.Fk_RESECOM" FromRole="tbreservasDetalle" ToRole="tbComida" />
+    <NavigationProperty Name="tbrestaurante" Relationship="Self.Fk_ASIRES" FromRole="tbreservasDetalle" ToRole="tbrestaurante" />
+  </EntityType>
+  <EntityType Name="tbrestaurante">
+    <Key>
+      <PropertyRef Name="restCodigo" />
+    </Key>
+    <Property Name="restCodigo" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="restNombre" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="restDireccion" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="restTelefono" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="restDescripcion" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="restLatitud" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="restLongitud" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ciudCodigo" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="usuaCodigo" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="restCorreo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="restPrincipal" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="restSucursal" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tbbonus" Relationship="Self.Fk_BONUS" FromRole="tbrestaurante" ToRole="tbbonus" />
+    <NavigationProperty Name="tbComida" Relationship="Self.Fk_COMIDA" FromRole="tbrestaurante" ToRole="tbComida" />
+    <NavigationProperty Name="tbreservas" Relationship="Self.Fk_RESERVA" FromRole="tbrestaurante" ToRole="tbreservas" />
+    <NavigationProperty Name="tbreservasDetalle" Relationship="Self.Fk_ASIRES" FromRole="tbrestaurante" ToRole="tbreservasDetalle" />
+    <NavigationProperty Name="tbUsuarios" Relationship="Self.Fk_CODIGO_RESTAURANTE" FromRole="tbrestaurante" ToRole="tbUsuarios" />
+  </EntityType>
+  <EntityType Name="tbUsuarios">
+    <Key>
+      <PropertyRef Name="usuaCodigo" />
+    </Key>
+    <Property Name="usuaCorreo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="usuaCodigo" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="usuaContraseña" Type="String" MaxLength="24" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="perfCodigo" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="usuaImagen" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tbperfiles" Relationship="Self.Fk_USUARIOS" FromRole="tbUsuarios" ToRole="tbperfiles" />
+    <NavigationProperty Name="tbpersona" Relationship="Self.Fk_CODIGO_USUARIO" FromRole="tbUsuarios" ToRole="tbpersona" />
+    <NavigationProperty Name="tbrestaurante" Relationship="Self.Fk_CODIGO_RESTAURANTE" FromRole="tbUsuarios" ToRole="tbrestaurante" />
+  </EntityType>
+  <Association Name="Fk_BONUS">
+    <End Role="tbrestaurante" Type="Self.tbrestaurante" Multiplicity="1" />
+    <End Role="tbbonus" Type="Self.tbbonus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbrestaurante">
+        <PropertyRef Name="restCodigo" />
+      </Principal>
+      <Dependent Role="tbbonus">
+        <PropertyRef Name="restCodigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_BONUSS">
+    <End Role="tbpersona" Type="Self.tbpersona" Multiplicity="0..1" />
+    <End Role="tbbonus" Type="Self.tbbonus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbpersona">
+        <PropertyRef Name="persIdentificacion" />
+      </Principal>
+      <Dependent Role="tbbonus">
+        <PropertyRef Name="persIdentificacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_CATEGORIA">
+    <End Role="tbCategorias" Type="Self.tbCategorias" Multiplicity="1" />
+    <End Role="tbComida" Type="Self.tbComida" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbCategorias">
+        <PropertyRef Name="cateCodigo" />
+      </Principal>
+      <Dependent Role="tbComida">
+        <PropertyRef Name="cateCodigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_CIUDAD_PERSONA">
+    <End Role="tbciudad" Type="Self.tbciudad" Multiplicity="1" />
+    <End Role="tbpersona" Type="Self.tbpersona" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbciudad">
+        <PropertyRef Name="ciudCodigo" />
+      </Principal>
+      <Dependent Role="tbpersona">
+        <PropertyRef Name="ciudCodigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_DEPCIUDAD">
+    <End Role="tbdepartamento" Type="Self.tbdepartamento" Multiplicity="1" />
+    <End Role="tbciudad" Type="Self.tbciudad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbdepartamento">
+        <PropertyRef Name="depaCodigo" />
+      </Principal>
+      <Dependent Role="tbciudad">
+        <PropertyRef Name="depaCodigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_COMIDA">
+    <End Role="tbrestaurante" Type="Self.tbrestaurante" Multiplicity="1" />
+    <End Role="tbComida" Type="Self.tbComida" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbrestaurante">
+        <PropertyRef Name="restCodigo" />
+      </Principal>
+      <Dependent Role="tbComida">
+        <PropertyRef Name="restcodigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_RESECOM">
+    <End Role="tbComida" Type="Self.tbComida" Multiplicity="1" />
+    <End Role="tbreservasDetalle" Type="Self.tbreservasDetalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbComida">
+        <PropertyRef Name="comiCodigo" />
+      </Principal>
+      <Dependent Role="tbreservasDetalle">
+        <PropertyRef Name="comiCodigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_PAISDEP">
+    <End Role="tbpais" Type="Self.tbpais" Multiplicity="1" />
+    <End Role="tbdepartamento" Type="Self.tbdepartamento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbpais">
+        <PropertyRef Name="paisCodigo" />
+      </Principal>
+      <Dependent Role="tbdepartamento">
+        <PropertyRef Name="paisCodigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_GENERO_PERSONA">
+    <End Role="tbgenero" Type="Self.tbgenero" Multiplicity="1" />
+    <End Role="tbpersona" Type="Self.tbpersona" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbgenero">
+        <PropertyRef Name="geneCodigo" />
+      </Principal>
+      <Dependent Role="tbpersona">
+        <PropertyRef Name="geneCodigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_USUARIOS">
+    <End Role="tbperfiles" Type="Self.tbperfiles" Multiplicity="1" />
+    <End Role="tbUsuarios" Type="Self.tbUsuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbperfiles">
+        <PropertyRef Name="perfCodigo" />
+      </Principal>
+      <Dependent Role="tbUsuarios">
+        <PropertyRef Name="perfCodigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_CODIGO_USUARIO">
+    <End Role="tbUsuarios" Type="Self.tbUsuarios" Multiplicity="1" />
+    <End Role="tbpersona" Type="Self.tbpersona" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbUsuarios">
+        <PropertyRef Name="usuaCodigo" />
+      </Principal>
+      <Dependent Role="tbpersona">
+        <PropertyRef Name="usuaCodigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_RESERVAS">
+    <End Role="tbpersona" Type="Self.tbpersona" Multiplicity="0..1" />
+    <End Role="tbreservas" Type="Self.tbreservas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbpersona">
+        <PropertyRef Name="persIdentificacion" />
+      </Principal>
+      <Dependent Role="tbreservas">
+        <PropertyRef Name="persIdentificacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_RESERVA">
+    <End Role="tbrestaurante" Type="Self.tbrestaurante" Multiplicity="1" />
+    <End Role="tbreservas" Type="Self.tbreservas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbrestaurante">
+        <PropertyRef Name="restCodigo" />
+      </Principal>
+      <Dependent Role="tbreservas">
+        <PropertyRef Name="restCodigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_ASIRES">
+    <End Role="tbrestaurante" Type="Self.tbrestaurante" Multiplicity="1" />
+    <End Role="tbreservasDetalle" Type="Self.tbreservasDetalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbrestaurante">
+        <PropertyRef Name="restCodigo" />
+      </Principal>
+      <Dependent Role="tbreservasDetalle">
+        <PropertyRef Name="restCodigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_CODIGO_RESTAURANTE">
+    <End Role="tbUsuarios" Type="Self.tbUsuarios" Multiplicity="1" />
+    <End Role="tbrestaurante" Type="Self.tbrestaurante" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbUsuarios">
+        <PropertyRef Name="usuaCodigo" />
+      </Principal>
+      <Dependent Role="tbrestaurante">
+        <PropertyRef Name="usuaCodigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BD_SEARCHFOODEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tbbonus" EntityType="Self.tbbonus" />
+    <EntitySet Name="tbCategorias" EntityType="Self.tbCategorias" />
+    <EntitySet Name="tbciudad" EntityType="Self.tbciudad" />
+    <EntitySet Name="tbComida" EntityType="Self.tbComida" />
+    <EntitySet Name="tbdepartamento" EntityType="Self.tbdepartamento" />
+    <EntitySet Name="tbgenero" EntityType="Self.tbgenero" />
+    <EntitySet Name="tbpais" EntityType="Self.tbpais" />
+    <EntitySet Name="tbperfiles" EntityType="Self.tbperfiles" />
+    <EntitySet Name="tbpersona" EntityType="Self.tbpersona" />
+    <EntitySet Name="tbreservas" EntityType="Self.tbreservas" />
+    <EntitySet Name="tbreservasDetalle" EntityType="Self.tbreservasDetalle" />
+    <EntitySet Name="tbrestaurante" EntityType="Self.tbrestaurante" />
+    <EntitySet Name="tbUsuarios" EntityType="Self.tbUsuarios" />
+    <AssociationSet Name="Fk_BONUS" Association="Self.Fk_BONUS">
+      <End Role="tbrestaurante" EntitySet="tbrestaurante" />
+      <End Role="tbbonus" EntitySet="tbbonus" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_BONUSS" Association="Self.Fk_BONUSS">
+      <End Role="tbpersona" EntitySet="tbpersona" />
+      <End Role="tbbonus" EntitySet="tbbonus" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_CATEGORIA" Association="Self.Fk_CATEGORIA">
+      <End Role="tbCategorias" EntitySet="tbCategorias" />
+      <End Role="tbComida" EntitySet="tbComida" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_CIUDAD_PERSONA" Association="Self.Fk_CIUDAD_PERSONA">
+      <End Role="tbciudad" EntitySet="tbciudad" />
+      <End Role="tbpersona" EntitySet="tbpersona" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_DEPCIUDAD" Association="Self.Fk_DEPCIUDAD">
+      <End Role="tbdepartamento" EntitySet="tbdepartamento" />
+      <End Role="tbciudad" EntitySet="tbciudad" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_COMIDA" Association="Self.Fk_COMIDA">
+      <End Role="tbrestaurante" EntitySet="tbrestaurante" />
+      <End Role="tbComida" EntitySet="tbComida" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_RESECOM" Association="Self.Fk_RESECOM">
+      <End Role="tbComida" EntitySet="tbComida" />
+      <End Role="tbreservasDetalle" EntitySet="tbreservasDetalle" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_PAISDEP" Association="Self.Fk_PAISDEP">
+      <End Role="tbpais" EntitySet="tbpais" />
+      <End Role="tbdepartamento" EntitySet="tbdepartamento" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_GENERO_PERSONA" Association="Self.Fk_GENERO_PERSONA">
+      <End Role="tbgenero" EntitySet="tbgenero" />
+      <End Role="tbpersona" EntitySet="tbpersona" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_USUARIOS" Association="Self.Fk_USUARIOS">
+      <End Role="tbperfiles" EntitySet="tbperfiles" />
+      <End Role="tbUsuarios" EntitySet="tbUsuarios" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_CODIGO_USUARIO" Association="Self.Fk_CODIGO_USUARIO">
+      <End Role="tbUsuarios" EntitySet="tbUsuarios" />
+      <End Role="tbpersona" EntitySet="tbpersona" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_RESERVAS" Association="Self.Fk_RESERVAS">
+      <End Role="tbpersona" EntitySet="tbpersona" />
+      <End Role="tbreservas" EntitySet="tbreservas" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_RESERVA" Association="Self.Fk_RESERVA">
+      <End Role="tbrestaurante" EntitySet="tbrestaurante" />
+      <End Role="tbreservas" EntitySet="tbreservas" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_ASIRES" Association="Self.Fk_ASIRES">
+      <End Role="tbrestaurante" EntitySet="tbrestaurante" />
+      <End Role="tbreservasDetalle" EntitySet="tbreservasDetalle" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_CODIGO_RESTAURANTE" Association="Self.Fk_CODIGO_RESTAURANTE">
+      <End Role="tbUsuarios" EntitySet="tbUsuarios" />
+      <End Role="tbrestaurante" EntitySet="tbrestaurante" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

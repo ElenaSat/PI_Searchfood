@@ -8,11 +8,26 @@
                     <asp:Image ID="imgSearchfood" runat="server" ImageUrl="~/Views/Administrador/Index/Icon/imgSearchFood.png" Height="100%" Width="100%"></asp:Image>
 
                 </div>
+               
                 <div class="col-md-7">
-
+                    <br>
+                    <br>                    
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
                     <asp:TextBox ID="txtBuscar" runat="server" CssClass="form-control" placeholder="Ej: Pizza, Perro Caliente "></asp:TextBox>
                 </div>
+                
                 <div class="col-md-1">
+                     <br>
+                    <br>
+                    <br>
+                    <br>                    
+                    <br>
+                    <br>
+                    <br>
                     <asp:Button ID="btnBuscar" runat="server" CssClass="btn btn-primary btn-block" Text="Buscar" />
                 </div>
             </div>

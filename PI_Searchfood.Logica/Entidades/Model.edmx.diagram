@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="20884093730f46b8b7fffc89bc930ec1" Name="Diagram1">
+        <EntityTypeShape EntityType="BD_SEARCHFOODModel.tbbonus" Width="1.5" PointX="7.5" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_SEARCHFOODModel.tbCategorias" Width="1.5" PointX="5.25" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_SEARCHFOODModel.tbciudad" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_SEARCHFOODModel.tbComida" Width="1.5" PointX="7.5" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_SEARCHFOODModel.tbdepartamento" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_SEARCHFOODModel.tbgenero" Width="1.5" PointX="3" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_SEARCHFOODModel.tbpais" Width="1.5" PointX="1.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_SEARCHFOODModel.tbperfiles" Width="1.5" PointX="0.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_SEARCHFOODModel.tbpersona" Width="1.5" PointX="5.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_SEARCHFOODModel.tbreservas" Width="1.5" PointX="10.5" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_SEARCHFOODModel.tbreservasDetalle" Width="1.5" PointX="9.75" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_SEARCHFOODModel.tbrestaurante" Width="1.5" PointX="5.25" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_SEARCHFOODModel.tbUsuarios" Width="1.5" PointX="3" PointY="6.5" IsExpanded="true" />
+        <AssociationConnector Association="BD_SEARCHFOODModel.Fk_BONUS" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_SEARCHFOODModel.Fk_BONUSS" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_SEARCHFOODModel.Fk_CATEGORIA" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_SEARCHFOODModel.Fk_CIUDAD_PERSONA" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_SEARCHFOODModel.Fk_DEPCIUDAD" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_SEARCHFOODModel.Fk_COMIDA" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_SEARCHFOODModel.Fk_RESECOM" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_SEARCHFOODModel.Fk_PAISDEP" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_SEARCHFOODModel.Fk_GENERO_PERSONA" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_SEARCHFOODModel.Fk_USUARIOS" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_SEARCHFOODModel.Fk_CODIGO_USUARIO" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_SEARCHFOODModel.Fk_RESERVAS" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_SEARCHFOODModel.Fk_RESERVA" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_SEARCHFOODModel.Fk_ASIRES" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_SEARCHFOODModel.Fk_CODIGO_RESTAURANTE" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

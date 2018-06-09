@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BD_SEARCHFOODModelStoreContainer" CdmEntityContainer="BD_SEARCHFOODEntities1">
+    <EntitySetMapping Name="tbbonus">
+      <EntityTypeMapping TypeName="BD_SEARCHFOODModel.tbbonus">
+        <MappingFragment StoreEntitySet="tbbonus">
+          <ScalarProperty Name="bonuCodigo" ColumnName="bonuCodigo" />
+          <ScalarProperty Name="restCodigo" ColumnName="restCodigo" />
+          <ScalarProperty Name="persIdentificacion" ColumnName="persIdentificacion" />
+          <ScalarProperty Name="bonuDescuento" ColumnName="bonuDescuento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbCategorias">
+      <EntityTypeMapping TypeName="BD_SEARCHFOODModel.tbCategorias">
+        <MappingFragment StoreEntitySet="tbCategorias">
+          <ScalarProperty Name="cateCodigo" ColumnName="cateCodigo" />
+          <ScalarProperty Name="cateDescripcion" ColumnName="cateDescripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbciudad">
+      <EntityTypeMapping TypeName="BD_SEARCHFOODModel.tbciudad">
+        <MappingFragment StoreEntitySet="tbciudad">
+          <ScalarProperty Name="ciudCodigo" ColumnName="ciudCodigo" />
+          <ScalarProperty Name="ciudNombre" ColumnName="ciudNombre" />
+          <ScalarProperty Name="depaCodigo" ColumnName="depaCodigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbComida">
+      <EntityTypeMapping TypeName="BD_SEARCHFOODModel.tbComida">
+        <MappingFragment StoreEntitySet="tbComida">
+          <ScalarProperty Name="comiCodigo" ColumnName="comiCodigo" />
+          <ScalarProperty Name="cateCodigo" ColumnName="cateCodigo" />
+          <ScalarProperty Name="restcodigo" ColumnName="restcodigo" />
+          <ScalarProperty Name="comiValor" ColumnName="comiValor" />
+          <ScalarProperty Name="comiDescripcion" ColumnName="comiDescripcion" />
+          <ScalarProperty Name="comiRutaImagen" ColumnName="comiRutaImagen" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbdepartamento">
+      <EntityTypeMapping TypeName="BD_SEARCHFOODModel.tbdepartamento">
+        <MappingFragment StoreEntitySet="tbdepartamento">
+          <ScalarProperty Name="depaCodigo" ColumnName="depaCodigo" />
+          <ScalarProperty Name="depaCombre" ColumnName="depaCombre" />
+          <ScalarProperty Name="paisCodigo" ColumnName="paisCodigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbgenero">
+      <EntityTypeMapping TypeName="BD_SEARCHFOODModel.tbgenero">
+        <MappingFragment StoreEntitySet="tbgenero">
+          <ScalarProperty Name="geneCodigo" ColumnName="geneCodigo" />
+          <ScalarProperty Name="geneDescripcion" ColumnName="geneDescripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbpais">
+      <EntityTypeMapping TypeName="BD_SEARCHFOODModel.tbpais">
+        <MappingFragment StoreEntitySet="tbpais">
+          <ScalarProperty Name="paisCodigo" ColumnName="paisCodigo" />
+          <ScalarProperty Name="paisNombre" ColumnName="paisNombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbperfiles">
+      <EntityTypeMapping TypeName="BD_SEARCHFOODModel.tbperfiles">
+        <MappingFragment StoreEntitySet="tbperfiles">
+          <ScalarProperty Name="perfCodigo" ColumnName="perfCodigo" />
+          <ScalarProperty Name="perfDescribcion" ColumnName="perfDescribcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbpersona">
+      <EntityTypeMapping TypeName="BD_SEARCHFOODModel.tbpersona">
+        <MappingFragment StoreEntitySet="tbpersona">
+          <ScalarProperty Name="persIdentificacion" ColumnName="persIdentificacion" />
+          <ScalarProperty Name="persNombre" ColumnName="persNombre" />
+          <ScalarProperty Name="persApellido" ColumnName="persApellido" />
+          <ScalarProperty Name="persDireccion" ColumnName="persDireccion" />
+          <ScalarProperty Name="persCorreo" ColumnName="persCorreo" />
+          <ScalarProperty Name="persCelular" ColumnName="persCelular" />
+          <ScalarProperty Name="geneCodigo" ColumnName="geneCodigo" />
+          <ScalarProperty Name="ciudCodigo" ColumnName="ciudCodigo" />
+          <ScalarProperty Name="usuaCodigo" ColumnName="usuaCodigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbreservas">
+      <EntityTypeMapping TypeName="BD_SEARCHFOODModel.tbreservas">
+        <MappingFragment StoreEntitySet="tbreservas">
+          <ScalarProperty Name="restCodigo" ColumnName="restCodigo" />
+          <ScalarProperty Name="persIdentificacion" ColumnName="persIdentificacion" />
+          <ScalarProperty Name="reseCodigo" ColumnName="reseCodigo" />
+          <ScalarProperty Name="reseFecha" ColumnName="reseFecha" />
+          <ScalarProperty Name="estaCodigo" ColumnName="estaCodigo" />
+          <ScalarProperty Name="reseTotal" ColumnName="reseTotal" />
+          <ScalarProperty Name="reseImpuesto" ColumnName="reseImpuesto" />
+          <ScalarProperty Name="reseObservacion" ColumnName="reseObservacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbreservasDetalle">
+      <EntityTypeMapping TypeName="BD_SEARCHFOODModel.tbreservasDetalle">
+        <MappingFragment StoreEntitySet="tbreservasDetalle">
+          <ScalarProperty Name="redeCodigo" ColumnName="redeCodigo" />
+          <ScalarProperty Name="restCodigo" ColumnName="restCodigo" />
+          <ScalarProperty Name="comiCodigo" ColumnName="comiCodigo" />
+          <ScalarProperty Name="redeCantidad" ColumnName="redeCantidad" />
+          <ScalarProperty Name="redeSubtotal" ColumnName="redeSubtotal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbrestaurante">
+      <EntityTypeMapping TypeName="BD_SEARCHFOODModel.tbrestaurante">
+        <MappingFragment StoreEntitySet="tbrestaurante">
+          <ScalarProperty Name="restCodigo" ColumnName="restCodigo" />
+          <ScalarProperty Name="restNombre" ColumnName="restNombre" />
+          <ScalarProperty Name="restDireccion" ColumnName="restDireccion" />
+          <ScalarProperty Name="restTelefono" ColumnName="restTelefono" />
+          <ScalarProperty Name="restDescripcion" ColumnName="restDescripcion" />
+          <ScalarProperty Name="restLatitud" ColumnName="restLatitud" />
+          <ScalarProperty Name="restLongitud" ColumnName="restLongitud" />
+          <ScalarProperty Name="ciudCodigo" ColumnName="ciudCodigo" />
+          <ScalarProperty Name="usuaCodigo" ColumnName="usuaCodigo" />
+          <ScalarProperty Name="restCorreo" ColumnName="restCorreo" />
+          <ScalarProperty Name="restPrincipal" ColumnName="restPrincipal" />
+          <ScalarProperty Name="restSucursal" ColumnName="restSucursal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbUsuarios">
+      <EntityTypeMapping TypeName="BD_SEARCHFOODModel.tbUsuarios">
+        <MappingFragment StoreEntitySet="tbUsuarios">
+          <ScalarProperty Name="usuaCorreo" ColumnName="usuaCorreo" />
+          <ScalarProperty Name="usuaCodigo" ColumnName="usuaCodigo" />
+          <ScalarProperty Name="usuaContraseña" ColumnName="usuaContraseña" />
+          <ScalarProperty Name="perfCodigo" ColumnName="perfCodigo" />
+          <ScalarProperty Name="usuaImagen" ColumnName="usuaImagen" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

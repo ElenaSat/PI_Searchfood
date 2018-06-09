@@ -9,6 +9,8 @@ namespace PI_Searchfood.Views.Administrador.Registros
     {
 
         public string stRuta = string.Empty, stRutaDestino = string.Empty;
+        public string principal = string.Empty;
+        public long sucursal = 0;
         void getRestaurante()
         {
             try
@@ -27,6 +29,13 @@ namespace PI_Searchfood.Views.Administrador.Registros
                 ddlPais.DataTextField = "Nombre_Pais";
                 ddlPais.DataValueField = "Codigo_Pais";
                 ddlPais.DataBind();
+                ddlRestaurantePrin.Enabled = false;
+
+                DataSet dsConsultarRestPrin = obadministrarRestauranteController.getConsultarRestaurantePrinController();
+                ddlRestaurantePrin.DataSource = dsConsultarRestPrin;
+                ddlRestaurantePrin.DataTextField = "Nombre";
+                ddlRestaurantePrin.DataValueField = "Codigo";
+                ddlRestaurantePrin.DataBind();
 
             }
             catch (Exception ex) { ClientScript.RegisterStartupScript(this.GetType(), "Mesaje", "<Script> swal('ERROR!', '" + ex.Message + "!', 'error')</Script>"); }
@@ -64,6 +73,34 @@ namespace PI_Searchfood.Views.Administrador.Registros
             txtLong.Text = "-76.51652991771698";
         }
 
+        void getCheckboox() {
+            try {
+                if (chkSP.Checked && chkSC.Checked)
+                {
+                    principal = "1"; sucursal = 1;
+                    ddlRestaurantePrin.Enabled = false;
+                }
+                else if (chkSP.Checked) {
+                    principal = "1";
+                    sucursal = 2;
+
+                } else if (chkSC.Checked) {
+                    principal = "2";
+                    sucursal = Convert.ToInt32(ddlRestaurantePrin.SelectedValue);
+
+                }
+                else
+                {
+                    throw new Exception("Se debe seleccionar sede");
+
+                }
+            }
+            catch (Exception e) {
+                ClientScript.RegisterStartupScript(this.GetType(), "Mesaje", "<Script> swal('ERROR!', '" + e.Message + "!', 'error')</Script>");
+
+            }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -98,10 +135,12 @@ namespace PI_Searchfood.Views.Administrador.Registros
                     Logica.BL.clsAdministracionEmpresas obclsAdministracionEmpresas = new Logica.BL.clsAdministracionEmpresas();
                     if (lbOpcion.Text.Equals("1"))
                     {
+                        
                         //Imagen Verificar
                         getImagenFu();
+                        getCheckboox();
 
-                        Logica.Models.clstbRestaurante obclstbRestaurante = new Logica.Models.clstbRestaurante
+                            Logica.Models.clstbRestaurante obclstbRestaurante = new Logica.Models.clstbRestaurante
                         {
                             longrestCodigo = Convert.ToInt64(txtNit.Text),
                             strrestNombre = txtNombre.Text,
@@ -111,7 +150,8 @@ namespace PI_Searchfood.Views.Administrador.Registros
                             strrestTelefono = txtCelular.Text,
                             strrestDescripcion = txtArea.Text,
                             strrestcorreo = txtCorreo.Text,
-
+                            strrestPrincipal=principal,
+                            strrestSucursal=Convert.ToString(sucursal),
                             clsUsuarios = new Logica.Models.clsUsuarios
                             {
 
@@ -126,6 +166,7 @@ namespace PI_Searchfood.Views.Administrador.Registros
                                 ciudCodigo = Convert.ToInt32(ddlCiudad.SelectedValue)
                             }
 
+                            
                         };
                         Controller.AdministrarRestauranteController obAdministrarRestauranteController = new Controller.AdministrarRestauranteController();
                         ClientScript.RegisterStartupScript(this.GetType(), "Mesaje", "<Script> swal('APROBADO!', '" + obAdministrarRestauranteController.setAdministrarEmpresasController(obclstbRestaurante, Convert.ToInt32(lbOpcion.Text)) + "!', 'success')</Script>");
@@ -148,6 +189,8 @@ namespace PI_Searchfood.Views.Administrador.Registros
                             strrestTelefono = txtCelular.Text,
                             strrestDescripcion = txtArea.Text,
                             strrestcorreo = txtCorreo.Text,
+                            strrestPrincipal=string.Empty,
+                            strrestSucursal=string.Empty,
 
                             clsUsuarios = new Logica.Models.clsUsuarios
                             {
@@ -260,13 +303,16 @@ namespace PI_Searchfood.Views.Administrador.Registros
                         strrestTelefono = string.Empty,
                         strrestLatitud = string.Empty,
                         strrestLongitud = string.Empty,
+                        strrestPrincipal=string.Empty,
+                        strrestSucursal=string.Empty,
 
                         clsUsuarios = new Logica.Models.clsUsuarios
                         {
 
                             inCodigo = Convert.ToInt32(lbCodigoRes.Text),
                             stPassword = string.Empty,
-                            stImagen=string.Empty
+                            stImagen=string.Empty,
+                            stLogin= gvwDatos.Rows[inIndice].Cells[9].Text
                         }
                    ,
                         clstbCiudad = new Logica.Models.clstbCiudad
@@ -287,6 +333,21 @@ namespace PI_Searchfood.Views.Administrador.Registros
             catch (Exception ex) { ClientScript.RegisterStartupScript(this.GetType(), "Mesaje", "<Script> swal('ERROR!', '" + ex.Message + "!', 'error')</Script>"); }
 
         }
+
+        
+        protected void chkSC_CheckedChanged(object sender, EventArgs e)
+        {
+
+           ddlRestaurantePrin.Enabled = true;
+          
+        }
+
+        protected void chkSP_CheckedChanged(object sender, EventArgs e)
+        {
+            ddlRestaurantePrin.Enabled = false; 
+          
+        }
+
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
             getLimpiar();

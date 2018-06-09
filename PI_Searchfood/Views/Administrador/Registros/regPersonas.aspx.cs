@@ -284,7 +284,8 @@ namespace PI_Searchfood.Views.Administrador.Registros
 
                             inCodigo = Convert.ToInt32(lbCodigoUs.Text),
                             stPassword = string.Empty,
-                            stImagen = string.Empty
+                            stImagen = string.Empty,
+                           stLogin=gvwDatos.Rows[inIndice].Cells[4].Text
                         }
                    ,
                         clstbCiudad = new Logica.Models.clstbCiudad

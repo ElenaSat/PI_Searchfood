@@ -157,6 +157,42 @@ namespace PI_Searchfood.Views.Administrador.Registros {
         protected global::System.Web.UI.WebControls.CompareValidator cvConfirmarPassword;
         
         /// <summary>
+        /// Control chkSP.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkSP;
+        
+        /// <summary>
+        /// Control chkSC.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkSC;
+        
+        /// <summary>
+        /// Control lbRestPrin.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbRestPrin;
+        
+        /// <summary>
+        /// Control ddlRestaurantePrin.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlRestaurantePrin;
+        
+        /// <summary>
         /// Control lbCelular.
         /// </summary>
         /// <remarks>
