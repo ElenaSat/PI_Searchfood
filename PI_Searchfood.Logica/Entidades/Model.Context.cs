@@ -28,7 +28,6 @@ namespace PI_Searchfood.Logica.Entidades
         public virtual DbSet<tbbonus> tbbonus { get; set; }
         public virtual DbSet<tbCategorias> tbCategorias { get; set; }
         public virtual DbSet<tbciudad> tbciudad { get; set; }
-        public virtual DbSet<tbComida> tbComida { get; set; }
         public virtual DbSet<tbdepartamento> tbdepartamento { get; set; }
         public virtual DbSet<tbgenero> tbgenero { get; set; }
         public virtual DbSet<tbpais> tbpais { get; set; }
@@ -38,5 +37,6 @@ namespace PI_Searchfood.Logica.Entidades
         public virtual DbSet<tbreservasDetalle> tbreservasDetalle { get; set; }
         public virtual DbSet<tbrestaurante> tbrestaurante { get; set; }
         public virtual DbSet<tbUsuarios> tbUsuarios { get; set; }
+        public virtual DbSet<tbComida> tbComida { get; set; }
     }
 }

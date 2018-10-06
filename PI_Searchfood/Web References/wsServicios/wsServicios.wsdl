@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="getComida">
+        <s:complexType />
+      </s:element>
+      <s:element name="getComidaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getComidaResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getComida_XML">
+        <s:complexType />
+      </s:element>
+      <s:element name="getComida_XMLResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getComida_XMLResult" type="tns:ArrayOfClstbComida" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfClstbComida">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="clstbComida" nillable="true" type="tns:clstbComida" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="clstbComida">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="longcomiCodigo" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="obclstbCategoria" type="tns:clstbCategoria" />
+          <s:element minOccurs="0" maxOccurs="1" name="obclstbRestaurante" type="tns:clstbRestaurante" />
+          <s:element minOccurs="1" maxOccurs="1" name="loncomiValor" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="strcomiDescripcion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="strcomiRutaImagen" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="clstbCategoria">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="longcateCodigo" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="strcateDescripcion" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="clstbRestaurante">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="longrestCodigo" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="strrestNombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="strrestDireccion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="strrestTelefono" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="strrestDescripcion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="strrestLatitud" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="strrestLongitud" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="strrestcorreo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="clstbCiudad" type="tns:clstbCiudad" />
+          <s:element minOccurs="0" maxOccurs="1" name="clsUsuarios" type="tns:clsUsuarios" />
+          <s:element minOccurs="0" maxOccurs="1" name="strrestPrincipal" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="strrestSucursal" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="clstbCiudad">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ciudCodigo" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="ciudNombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="clstbDepartamento" type="tns:clstbDepartamento" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="clstbDepartamento">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="longdepaCodigo" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="stdepaCombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="clstbPais" type="tns:clstbPais" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="clstbPais">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="longpaisCodigo" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="stpaisNombre" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="clsUsuarios">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="inCodigo" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="stDescripcion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="stLogin" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="stPassword" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="stPerfil" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="stImagen" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="getComidaSoapIn">
+    <wsdl:part name="parameters" element="tns:getComida" />
+  </wsdl:message>
+  <wsdl:message name="getComidaSoapOut">
+    <wsdl:part name="parameters" element="tns:getComidaResponse" />
+  </wsdl:message>
+  <wsdl:message name="getComida_XMLSoapIn">
+    <wsdl:part name="parameters" element="tns:getComida_XML" />
+  </wsdl:message>
+  <wsdl:message name="getComida_XMLSoapOut">
+    <wsdl:part name="parameters" element="tns:getComida_XMLResponse" />
+  </wsdl:message>
+  <wsdl:portType name="wsServiciosSoap">
+    <wsdl:operation name="getComida">
+      <wsdl:input message="tns:getComidaSoapIn" />
+      <wsdl:output message="tns:getComidaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getComida_XML">
+      <wsdl:input message="tns:getComida_XMLSoapIn" />
+      <wsdl:output message="tns:getComida_XMLSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="wsServiciosSoap" type="tns:wsServiciosSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getComida">
+      <soap:operation soapAction="http://tempuri.org/getComida" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getComida_XML">
+      <soap:operation soapAction="http://tempuri.org/getComida_XML" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="wsServiciosSoap12" type="tns:wsServiciosSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getComida">
+      <soap12:operation soapAction="http://tempuri.org/getComida" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getComida_XML">
+      <soap12:operation soapAction="http://tempuri.org/getComida_XML" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="wsServicios">
+    <wsdl:port name="wsServiciosSoap" binding="tns:wsServiciosSoap">
+      <soap:address location="http://localhost/PI_Searchfood.WS/Servicios/wsServicios.asmx" />
+    </wsdl:port>
+    <wsdl:port name="wsServiciosSoap12" binding="tns:wsServiciosSoap12">
+      <soap12:address location="http://localhost/PI_Searchfood.WS/Servicios/wsServicios.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

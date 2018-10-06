@@ -57,6 +57,9 @@
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -80,6 +83,7 @@
     <Content Include="packages.config" />
     <Content Include="obj\Debug\CoreCompileInputs.cache" />
     <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <Content Include="Servicios\wsConsulta.asmx" />
     <Content Include="vendor\bootstrap\css\bootstrap.css.map" />
     <Content Include="vendor\bootstrap\css\bootstrap.min.css.map" />
     <Content Include="vendor\bootstrap\js\bootstrap.bundle.js.map" />
@@ -125,6 +129,20 @@
     <Content Include="Resources\Template\Administrador.Master" />
     <Content Include="Resources\Template\Cliente.Master" />
     <Content Include="Resources\Template\Restaurantes.Master" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Views\Cliente\Busquedad.aspx" />
+    <Content Include="Views\Restaurante\TablaComida.aspx" />
+    <Content Include="Web References\wsServicios\clstbComida.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\wsServicios\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\wsServicios\wsServicios.wsdl" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -185,7 +203,8 @@
     <Content Include="Views\Administrador\Registros\regRestaurante.aspx" />
     <Content Include="Views\Cliente\indexCliente.aspx" />
     <Content Include="Views\Restaurante\indexRestaurante.aspx" />
-    <Content Include="Views\Restaurante\RtMenu.aspx" />
+    <Content Include="Views\Restaurante\Menu.aspx" />
+    <None Include="Web References\wsServicios\wsServicios.disco" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -200,6 +219,11 @@
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="Resources\Template\Administrador.Master.cs">
       <DependentUpon>Administrador.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -220,6 +244,10 @@
     </Compile>
     <Compile Include="Resources\Template\Restaurantes.Master.designer.cs">
       <DependentUpon>Restaurantes.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Servicios\wsConsulta.asmx.cs">
+      <DependentUpon>wsConsulta.asmx</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Views\Administrador\Index\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -270,6 +298,13 @@
     <Compile Include="Views\Administrador\Registros\regRestaurante.aspx.designer.cs">
       <DependentUpon>regRestaurante.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Cliente\Busquedad.aspx.cs">
+      <DependentUpon>Busquedad.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Cliente\Busquedad.aspx.designer.cs">
+      <DependentUpon>Busquedad.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\Cliente\indexCliente.aspx.cs">
       <DependentUpon>indexCliente.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -284,12 +319,24 @@
     <Compile Include="Views\Restaurante\indexRestaurante.aspx.designer.cs">
       <DependentUpon>indexRestaurante.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Restaurante\RtMenu.aspx.cs">
-      <DependentUpon>RtMenu.aspx</DependentUpon>
+    <Compile Include="Views\Restaurante\Menu.aspx.cs">
+      <DependentUpon>Menu.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\Restaurante\RtMenu.aspx.designer.cs">
-      <DependentUpon>RtMenu.aspx</DependentUpon>
+    <Compile Include="Views\Restaurante\Menu.aspx.designer.cs">
+      <DependentUpon>Menu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Restaurante\TablaComida.aspx.cs">
+      <DependentUpon>TablaComida.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Restaurante\TablaComida.aspx.designer.cs">
+      <DependentUpon>TablaComida.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\wsServicios\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -303,6 +350,25 @@
       <Project>{72d754f8-4b8e-4f37-8069-038bd68ee877}</Project>
       <Name>PI_Searchfood.Logica</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://localhost/PI_Searchfood.WS/Servicios/wsServicios.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\wsServicios\</RelPath>
+      <UpdateFromURL>http://localhost/PI_Searchfood.WS/Servicios/wsServicios.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>PI_Searchfood_wsServicios_wsServicios</CachedSettingsPropName>
+    </WebReferenceUrl>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

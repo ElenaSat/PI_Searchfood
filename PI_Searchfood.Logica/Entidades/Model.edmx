@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="BD_SEARCHFOODModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="BD_SEARCHFOODModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <!--Errores durante la generación:
 advertencia 6013: La tabla o vista 'BD_SEARCHFOOD.dbo.tbasistenciarestaurante' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
         <EntityType Name="tbasistenciarestaurante">
@@ -41,7 +41,7 @@ advertencia 6013: La tabla o vista 'BD_SEARCHFOOD.dbo.tbasistenciarestaurante' n
           <Key>
             <PropertyRef Name="comiCodigo" />
           </Key>
-          <Property Name="comiCodigo" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="comiCodigo" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="cateCodigo" Type="numeric" Precision="18" Scale="0" Nullable="false" />
           <Property Name="restcodigo" Type="numeric" Precision="18" Scale="0" Nullable="false" />
           <Property Name="comiValor" Type="numeric" Precision="18" Scale="0" Nullable="false" />
@@ -402,8 +402,7 @@ error 6004: Una relación hace referencia a la tabla 'BD_SEARCHFOOD.dbo.tbasiste
             <End Role="tbUsuarios" EntitySet="tbUsuarios" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BD_SEARCHFOODModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -424,7 +423,7 @@ error 6004: Una relación hace referencia a la tabla 'BD_SEARCHFOOD.dbo.tbasiste
           </Key>
           <Property Name="cateCodigo" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="cateDescripcion" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="tbComida" Relationship="Self.Fk_CATEGORIA" FromRole="tbCategorias" ToRole="tbComida" />
+          <NavigationProperty Name="tbComida" Relationship="BD_SEARCHFOODModel.Fk_CATEGORIA" FromRole="tbCategorias" ToRole="tbComida" />
         </EntityType>
         <EntityType Name="tbciudad">
           <Key>
@@ -435,20 +434,6 @@ error 6004: Una relación hace referencia a la tabla 'BD_SEARCHFOOD.dbo.tbasiste
           <Property Name="depaCodigo" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <NavigationProperty Name="tbpersona" Relationship="Self.Fk_CIUDAD_PERSONA" FromRole="tbciudad" ToRole="tbpersona" />
           <NavigationProperty Name="tbdepartamento" Relationship="Self.Fk_DEPCIUDAD" FromRole="tbciudad" ToRole="tbdepartamento" />
-        </EntityType>
-        <EntityType Name="tbComida">
-          <Key>
-            <PropertyRef Name="comiCodigo" />
-          </Key>
-          <Property Name="comiCodigo" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="cateCodigo" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="restcodigo" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="comiValor" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="comiDescripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="comiRutaImagen" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tbCategorias" Relationship="Self.Fk_CATEGORIA" FromRole="tbComida" ToRole="tbCategorias" />
-          <NavigationProperty Name="tbrestaurante" Relationship="Self.Fk_COMIDA" FromRole="tbComida" ToRole="tbrestaurante" />
-          <NavigationProperty Name="tbreservasDetalle" Relationship="Self.Fk_RESECOM" FromRole="tbComida" ToRole="tbreservasDetalle" />
         </EntityType>
         <EntityType Name="tbdepartamento">
           <Key>
@@ -527,8 +512,8 @@ error 6004: Una relación hace referencia a la tabla 'BD_SEARCHFOOD.dbo.tbasiste
           <Property Name="comiCodigo" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="redeCantidad" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="redeSubtotal" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <NavigationProperty Name="tbComida" Relationship="Self.Fk_RESECOM" FromRole="tbreservasDetalle" ToRole="tbComida" />
           <NavigationProperty Name="tbrestaurante" Relationship="Self.Fk_ASIRES" FromRole="tbreservasDetalle" ToRole="tbrestaurante" />
+          <NavigationProperty Name="tbComida" Relationship="BD_SEARCHFOODModel.Fk_RESECOM" FromRole="tbreservasDetalle" ToRole="tbComida" />
         </EntityType>
         <EntityType Name="tbrestaurante">
           <Key>
@@ -547,10 +532,10 @@ error 6004: Una relación hace referencia a la tabla 'BD_SEARCHFOOD.dbo.tbasiste
           <Property Name="restPrincipal" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
           <Property Name="restSucursal" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="tbbonus" Relationship="Self.Fk_BONUS" FromRole="tbrestaurante" ToRole="tbbonus" />
-          <NavigationProperty Name="tbComida" Relationship="Self.Fk_COMIDA" FromRole="tbrestaurante" ToRole="tbComida" />
           <NavigationProperty Name="tbreservas" Relationship="Self.Fk_RESERVA" FromRole="tbrestaurante" ToRole="tbreservas" />
           <NavigationProperty Name="tbreservasDetalle" Relationship="Self.Fk_ASIRES" FromRole="tbrestaurante" ToRole="tbreservasDetalle" />
           <NavigationProperty Name="tbUsuarios" Relationship="Self.Fk_CODIGO_RESTAURANTE" FromRole="tbrestaurante" ToRole="tbUsuarios" />
+          <NavigationProperty Name="tbComida" Relationship="BD_SEARCHFOODModel.Fk_COMIDA" FromRole="tbrestaurante" ToRole="tbComida" />
         </EntityType>
         <EntityType Name="tbUsuarios">
           <Key>
@@ -589,18 +574,6 @@ error 6004: Una relación hace referencia a la tabla 'BD_SEARCHFOOD.dbo.tbasiste
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="Fk_CATEGORIA">
-          <End Role="tbCategorias" Type="Self.tbCategorias" Multiplicity="1" />
-          <End Role="tbComida" Type="Self.tbComida" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbCategorias">
-              <PropertyRef Name="cateCodigo" />
-            </Principal>
-            <Dependent Role="tbComida">
-              <PropertyRef Name="cateCodigo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="Fk_CIUDAD_PERSONA">
           <End Role="tbciudad" Type="Self.tbciudad" Multiplicity="1" />
           <End Role="tbpersona" Type="Self.tbpersona" Multiplicity="*" />
@@ -622,30 +595,6 @@ error 6004: Una relación hace referencia a la tabla 'BD_SEARCHFOOD.dbo.tbasiste
             </Principal>
             <Dependent Role="tbciudad">
               <PropertyRef Name="depaCodigo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="Fk_COMIDA">
-          <End Role="tbrestaurante" Type="Self.tbrestaurante" Multiplicity="1" />
-          <End Role="tbComida" Type="Self.tbComida" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbrestaurante">
-              <PropertyRef Name="restCodigo" />
-            </Principal>
-            <Dependent Role="tbComida">
-              <PropertyRef Name="restcodigo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="Fk_RESECOM">
-          <End Role="tbComida" Type="Self.tbComida" Multiplicity="1" />
-          <End Role="tbreservasDetalle" Type="Self.tbreservasDetalle" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbComida">
-              <PropertyRef Name="comiCodigo" />
-            </Principal>
-            <Dependent Role="tbreservasDetalle">
-              <PropertyRef Name="comiCodigo" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -749,7 +698,6 @@ error 6004: Una relación hace referencia a la tabla 'BD_SEARCHFOOD.dbo.tbasiste
           <EntitySet Name="tbbonus" EntityType="Self.tbbonus" />
           <EntitySet Name="tbCategorias" EntityType="Self.tbCategorias" />
           <EntitySet Name="tbciudad" EntityType="Self.tbciudad" />
-          <EntitySet Name="tbComida" EntityType="Self.tbComida" />
           <EntitySet Name="tbdepartamento" EntityType="Self.tbdepartamento" />
           <EntitySet Name="tbgenero" EntityType="Self.tbgenero" />
           <EntitySet Name="tbpais" EntityType="Self.tbpais" />
@@ -767,10 +715,6 @@ error 6004: Una relación hace referencia a la tabla 'BD_SEARCHFOOD.dbo.tbasiste
             <End Role="tbpersona" EntitySet="tbpersona" />
             <End Role="tbbonus" EntitySet="tbbonus" />
           </AssociationSet>
-          <AssociationSet Name="Fk_CATEGORIA" Association="Self.Fk_CATEGORIA">
-            <End Role="tbCategorias" EntitySet="tbCategorias" />
-            <End Role="tbComida" EntitySet="tbComida" />
-          </AssociationSet>
           <AssociationSet Name="Fk_CIUDAD_PERSONA" Association="Self.Fk_CIUDAD_PERSONA">
             <End Role="tbciudad" EntitySet="tbciudad" />
             <End Role="tbpersona" EntitySet="tbpersona" />
@@ -778,14 +722,6 @@ error 6004: Una relación hace referencia a la tabla 'BD_SEARCHFOOD.dbo.tbasiste
           <AssociationSet Name="Fk_DEPCIUDAD" Association="Self.Fk_DEPCIUDAD">
             <End Role="tbdepartamento" EntitySet="tbdepartamento" />
             <End Role="tbciudad" EntitySet="tbciudad" />
-          </AssociationSet>
-          <AssociationSet Name="Fk_COMIDA" Association="Self.Fk_COMIDA">
-            <End Role="tbrestaurante" EntitySet="tbrestaurante" />
-            <End Role="tbComida" EntitySet="tbComida" />
-          </AssociationSet>
-          <AssociationSet Name="Fk_RESECOM" Association="Self.Fk_RESECOM">
-            <End Role="tbComida" EntitySet="tbComida" />
-            <End Role="tbreservasDetalle" EntitySet="tbreservasDetalle" />
           </AssociationSet>
           <AssociationSet Name="Fk_PAISDEP" Association="Self.Fk_PAISDEP">
             <End Role="tbpais" EntitySet="tbpais" />
@@ -819,7 +755,70 @@ error 6004: Una relación hace referencia a la tabla 'BD_SEARCHFOOD.dbo.tbasiste
             <End Role="tbUsuarios" EntitySet="tbUsuarios" />
             <End Role="tbrestaurante" EntitySet="tbrestaurante" />
           </AssociationSet>
+          <EntitySet Name="tbComida" EntityType="BD_SEARCHFOODModel.tbComida" />
+          <AssociationSet Name="Fk_CATEGORIA" Association="BD_SEARCHFOODModel.Fk_CATEGORIA">
+            <End Role="tbCategorias" EntitySet="tbCategorias" />
+            <End Role="tbComida" EntitySet="tbComida" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_COMIDA" Association="BD_SEARCHFOODModel.Fk_COMIDA">
+            <End Role="tbrestaurante" EntitySet="tbrestaurante" />
+            <End Role="tbComida" EntitySet="tbComida" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_RESECOM" Association="BD_SEARCHFOODModel.Fk_RESECOM">
+            <End Role="tbComida" EntitySet="tbComida" />
+            <End Role="tbreservasDetalle" EntitySet="tbreservasDetalle" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="tbComida">
+          <Key>
+            <PropertyRef Name="comiCodigo" />
+          </Key>
+          <Property Name="comiCodigo" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cateCodigo" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="restcodigo" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="comiValor" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="comiDescripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="comiRutaImagen" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbCategorias" Relationship="BD_SEARCHFOODModel.Fk_CATEGORIA" FromRole="tbComida" ToRole="tbCategorias" />
+          <NavigationProperty Name="tbrestaurante" Relationship="BD_SEARCHFOODModel.Fk_COMIDA" FromRole="tbComida" ToRole="tbrestaurante" />
+          <NavigationProperty Name="tbreservasDetalle" Relationship="BD_SEARCHFOODModel.Fk_RESECOM" FromRole="tbComida" ToRole="tbreservasDetalle" />
+        </EntityType>
+        <Association Name="Fk_CATEGORIA">
+          <End Type="BD_SEARCHFOODModel.tbCategorias" Role="tbCategorias" Multiplicity="1" />
+          <End Type="BD_SEARCHFOODModel.tbComida" Role="tbComida" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbCategorias">
+              <PropertyRef Name="cateCodigo" />
+            </Principal>
+            <Dependent Role="tbComida">
+              <PropertyRef Name="cateCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_COMIDA">
+          <End Type="BD_SEARCHFOODModel.tbrestaurante" Role="tbrestaurante" Multiplicity="1" />
+          <End Type="BD_SEARCHFOODModel.tbComida" Role="tbComida" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbrestaurante">
+              <PropertyRef Name="restCodigo" />
+            </Principal>
+            <Dependent Role="tbComida">
+              <PropertyRef Name="restcodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_RESECOM">
+          <End Type="BD_SEARCHFOODModel.tbComida" Role="tbComida" Multiplicity="1" />
+          <End Type="BD_SEARCHFOODModel.tbreservasDetalle" Role="tbreservasDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbComida">
+              <PropertyRef Name="comiCodigo" />
+            </Principal>
+            <Dependent Role="tbreservasDetalle">
+              <PropertyRef Name="comiCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -850,18 +849,6 @@ error 6004: Una relación hace referencia a la tabla 'BD_SEARCHFOOD.dbo.tbasiste
                 <ScalarProperty Name="ciudCodigo" ColumnName="ciudCodigo" />
                 <ScalarProperty Name="ciudNombre" ColumnName="ciudNombre" />
                 <ScalarProperty Name="depaCodigo" ColumnName="depaCodigo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbComida">
-            <EntityTypeMapping TypeName="BD_SEARCHFOODModel.tbComida">
-              <MappingFragment StoreEntitySet="tbComida">
-                <ScalarProperty Name="comiCodigo" ColumnName="comiCodigo" />
-                <ScalarProperty Name="cateCodigo" ColumnName="cateCodigo" />
-                <ScalarProperty Name="restcodigo" ColumnName="restcodigo" />
-                <ScalarProperty Name="comiValor" ColumnName="comiValor" />
-                <ScalarProperty Name="comiDescripcion" ColumnName="comiDescripcion" />
-                <ScalarProperty Name="comiRutaImagen" ColumnName="comiRutaImagen" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -964,6 +951,18 @@ error 6004: Una relación hace referencia a la tabla 'BD_SEARCHFOOD.dbo.tbasiste
                 <ScalarProperty Name="usuaContraseña" ColumnName="usuaContraseña" />
                 <ScalarProperty Name="perfCodigo" ColumnName="perfCodigo" />
                 <ScalarProperty Name="usuaImagen" ColumnName="usuaImagen" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbComida">
+            <EntityTypeMapping TypeName="BD_SEARCHFOODModel.tbComida">
+              <MappingFragment StoreEntitySet="tbComida">
+                <ScalarProperty Name="comiRutaImagen" ColumnName="comiRutaImagen" />
+                <ScalarProperty Name="comiDescripcion" ColumnName="comiDescripcion" />
+                <ScalarProperty Name="comiValor" ColumnName="comiValor" />
+                <ScalarProperty Name="restcodigo" ColumnName="restcodigo" />
+                <ScalarProperty Name="cateCodigo" ColumnName="cateCodigo" />
+                <ScalarProperty Name="comiCodigo" ColumnName="comiCodigo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

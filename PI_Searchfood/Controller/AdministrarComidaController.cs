@@ -2,45 +2,44 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Newtonsoft.Json;
 
 namespace PI_Searchfood.Controller
 {
     public class AdministrarComidaController
     {
-        public List<Logica.Models.clstbComida> getConsultarAdministrarComidaController()
+        //RETORNA CONSULTA
+        public List<Logica.Models.clstbComida> getComidaController() {
+            try
+            {
+                wsServicios.wsServicios obwsServicios = new wsServicios.wsServicios();
+                string json = obwsServicios.getComida();
+                List<Logica.Models.clstbComida> lstclstbComidas = 
+                JsonConvert.DeserializeObject<List <Logica.Models.clstbComida>>(json);
+                return lstclstbComidas;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+        }
+        public object getComidaController_XML()
         {
             try
             {
-                PI_Searchfood.Logica.BL.clsComida obclsComida = new Logica.BL.clsComida();
-                return obclsComida.getComida();
-
+                wsServicios.wsServicios obwsServicios = new wsServicios.wsServicios();
+                var lstclstbComidas = obwsServicios.getComida_XML();
+                return lstclstbComidas;
             }
-            catch (Exception ex) { throw ex; }
-        }
+            catch (Exception ex)
+            {
 
-        public string addOpcionController(Logica.Models.clstbComida obclstbComida)
-        {
-
-            PI_Searchfood.Logica.BL.clsComida obclsComida = new Logica.BL.clsComida();
-            return obclsComida.addNombreOpcion(obclstbComida);
+                throw ex;
+            }
 
         }
 
-        public string deleteOpcionController(Logica.Models.clstbComida obclstbComida)
-        {
-
-            PI_Searchfood.Logica.BL.clsComida obclsComida = new Logica.BL.clsComida();
-            return obclsComida.deleteNombreOpcion(obclstbComida);
-
-        }
-        public string updateOpcionController(Logica.Models.clstbComida obclstbComida)
-        {
-
-            PI_Searchfood.Logica.BL.clsComida obclsComida = new Logica.BL.clsComida();
-            return obclsComida.updateNombreOpcion(obclstbComida);
-
-        }
-
-       
     }
 }

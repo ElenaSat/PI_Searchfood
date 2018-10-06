@@ -20,7 +20,7 @@ namespace PI_Searchfood.Logica.Entidades
         public decimal redeCantidad { get; set; }
         public decimal redeSubtotal { get; set; }
     
-        public virtual tbComida tbComida { get; set; }
         public virtual tbrestaurante tbrestaurante { get; set; }
+        public virtual tbComida tbComida { get; set; }
     }
 }

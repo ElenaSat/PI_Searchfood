@@ -20,3 +20,17 @@ B:\WEBI\PI\PI_Searchfood\PI_Searchfood.Logica\obj\Debug\PI_Searchfood.Logica.csp
 B:\WEBI\PI\PI_Searchfood\PI_Searchfood.Logica\obj\Debug\PI_Searchfood.Logica.csproj.CopyComplete
 B:\WEBI\PI\PI_Searchfood\PI_Searchfood.Logica\obj\Debug\PI_Searchfood.Logica.dll
 B:\WEBI\PI\PI_Searchfood\PI_Searchfood.Logica\obj\Debug\PI_Searchfood.Logica.pdb
+B:\2018-2019  Francia\WEBI\PI\PI_Searchfood\PI_Searchfood.Logica\bin\Debug\PI_Searchfood.Logica.dll.config
+B:\2018-2019  Francia\WEBI\PI\PI_Searchfood\PI_Searchfood.Logica\bin\Debug\PI_Searchfood.Logica.dll
+B:\2018-2019  Francia\WEBI\PI\PI_Searchfood\PI_Searchfood.Logica\bin\Debug\PI_Searchfood.Logica.pdb
+B:\2018-2019  Francia\WEBI\PI\PI_Searchfood\PI_Searchfood.Logica\bin\Debug\EntityFramework.dll
+B:\2018-2019  Francia\WEBI\PI\PI_Searchfood\PI_Searchfood.Logica\bin\Debug\EntityFramework.SqlServer.dll
+B:\2018-2019  Francia\WEBI\PI\PI_Searchfood\PI_Searchfood.Logica\bin\Debug\Newtonsoft.Json.dll
+B:\2018-2019  Francia\WEBI\PI\PI_Searchfood\PI_Searchfood.Logica\bin\Debug\EntityFramework.xml
+B:\2018-2019  Francia\WEBI\PI\PI_Searchfood\PI_Searchfood.Logica\bin\Debug\EntityFramework.SqlServer.xml
+B:\2018-2019  Francia\WEBI\PI\PI_Searchfood\PI_Searchfood.Logica\bin\Debug\Newtonsoft.Json.xml
+B:\2018-2019  Francia\WEBI\PI\PI_Searchfood\PI_Searchfood.Logica\obj\Debug\PI_Searchfood.Logica.csproj.CoreCompileInputs.cache
+B:\2018-2019  Francia\WEBI\PI\PI_Searchfood\PI_Searchfood.Logica\obj\Debug\PI_Searchfood.Logica.csproj.CopyComplete
+B:\2018-2019  Francia\WEBI\PI\PI_Searchfood\PI_Searchfood.Logica\obj\Debug\PI_Searchfood.Logica.dll
+B:\2018-2019  Francia\WEBI\PI\PI_Searchfood\PI_Searchfood.Logica\obj\Debug\PI_Searchfood.Logica.pdb
+B:\2018-2019  Francia\WEBI\PI\PI_Searchfood\PI_Searchfood.Logica\obj\Debug\PI_Searchfood.Logica.csprojAssemblyReference.cache

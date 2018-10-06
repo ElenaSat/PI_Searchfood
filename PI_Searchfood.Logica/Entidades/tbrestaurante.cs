@@ -18,9 +18,9 @@ namespace PI_Searchfood.Logica.Entidades
         public tbrestaurante()
         {
             this.tbbonus = new HashSet<tbbonus>();
-            this.tbComida = new HashSet<tbComida>();
             this.tbreservas = new HashSet<tbreservas>();
             this.tbreservasDetalle = new HashSet<tbreservasDetalle>();
+            this.tbComida = new HashSet<tbComida>();
         }
     
         public decimal restCodigo { get; set; }
@@ -39,11 +39,11 @@ namespace PI_Searchfood.Logica.Entidades
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbbonus> tbbonus { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tbComida> tbComida { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbreservas> tbreservas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbreservasDetalle> tbreservasDetalle { get; set; }
         public virtual tbUsuarios tbUsuarios { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbComida> tbComida { get; set; }
     }
 }

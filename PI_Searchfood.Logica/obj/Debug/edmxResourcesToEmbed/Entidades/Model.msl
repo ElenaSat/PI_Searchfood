@@ -28,18 +28,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="tbComida">
-      <EntityTypeMapping TypeName="BD_SEARCHFOODModel.tbComida">
-        <MappingFragment StoreEntitySet="tbComida">
-          <ScalarProperty Name="comiCodigo" ColumnName="comiCodigo" />
-          <ScalarProperty Name="cateCodigo" ColumnName="cateCodigo" />
-          <ScalarProperty Name="restcodigo" ColumnName="restcodigo" />
-          <ScalarProperty Name="comiValor" ColumnName="comiValor" />
-          <ScalarProperty Name="comiDescripcion" ColumnName="comiDescripcion" />
-          <ScalarProperty Name="comiRutaImagen" ColumnName="comiRutaImagen" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="tbdepartamento">
       <EntityTypeMapping TypeName="BD_SEARCHFOODModel.tbdepartamento">
         <MappingFragment StoreEntitySet="tbdepartamento">
@@ -139,6 +127,18 @@
           <ScalarProperty Name="usuaContraseña" ColumnName="usuaContraseña" />
           <ScalarProperty Name="perfCodigo" ColumnName="perfCodigo" />
           <ScalarProperty Name="usuaImagen" ColumnName="usuaImagen" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbComida">
+      <EntityTypeMapping TypeName="BD_SEARCHFOODModel.tbComida">
+        <MappingFragment StoreEntitySet="tbComida">
+          <ScalarProperty Name="comiRutaImagen" ColumnName="comiRutaImagen" />
+          <ScalarProperty Name="comiDescripcion" ColumnName="comiDescripcion" />
+          <ScalarProperty Name="comiValor" ColumnName="comiValor" />
+          <ScalarProperty Name="restcodigo" ColumnName="restcodigo" />
+          <ScalarProperty Name="cateCodigo" ColumnName="cateCodigo" />
+          <ScalarProperty Name="comiCodigo" ColumnName="comiCodigo" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

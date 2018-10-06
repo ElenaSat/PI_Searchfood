@@ -17,7 +17,7 @@
     </Key>
     <Property Name="cateCodigo" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
     <Property Name="cateDescripcion" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="tbComida" Relationship="Self.Fk_CATEGORIA" FromRole="tbCategorias" ToRole="tbComida" />
+    <NavigationProperty Name="tbComida" Relationship="BD_SEARCHFOODModel.Fk_CATEGORIA" FromRole="tbCategorias" ToRole="tbComida" />
   </EntityType>
   <EntityType Name="tbciudad">
     <Key>
@@ -28,20 +28,6 @@
     <Property Name="depaCodigo" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
     <NavigationProperty Name="tbpersona" Relationship="Self.Fk_CIUDAD_PERSONA" FromRole="tbciudad" ToRole="tbpersona" />
     <NavigationProperty Name="tbdepartamento" Relationship="Self.Fk_DEPCIUDAD" FromRole="tbciudad" ToRole="tbdepartamento" />
-  </EntityType>
-  <EntityType Name="tbComida">
-    <Key>
-      <PropertyRef Name="comiCodigo" />
-    </Key>
-    <Property Name="comiCodigo" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-    <Property Name="cateCodigo" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-    <Property Name="restcodigo" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-    <Property Name="comiValor" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-    <Property Name="comiDescripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="comiRutaImagen" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="tbCategorias" Relationship="Self.Fk_CATEGORIA" FromRole="tbComida" ToRole="tbCategorias" />
-    <NavigationProperty Name="tbrestaurante" Relationship="Self.Fk_COMIDA" FromRole="tbComida" ToRole="tbrestaurante" />
-    <NavigationProperty Name="tbreservasDetalle" Relationship="Self.Fk_RESECOM" FromRole="tbComida" ToRole="tbreservasDetalle" />
   </EntityType>
   <EntityType Name="tbdepartamento">
     <Key>
@@ -120,8 +106,8 @@
     <Property Name="comiCodigo" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
     <Property Name="redeCantidad" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
     <Property Name="redeSubtotal" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-    <NavigationProperty Name="tbComida" Relationship="Self.Fk_RESECOM" FromRole="tbreservasDetalle" ToRole="tbComida" />
     <NavigationProperty Name="tbrestaurante" Relationship="Self.Fk_ASIRES" FromRole="tbreservasDetalle" ToRole="tbrestaurante" />
+    <NavigationProperty Name="tbComida" Relationship="BD_SEARCHFOODModel.Fk_RESECOM" FromRole="tbreservasDetalle" ToRole="tbComida" />
   </EntityType>
   <EntityType Name="tbrestaurante">
     <Key>
@@ -140,10 +126,10 @@
     <Property Name="restPrincipal" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
     <Property Name="restSucursal" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="tbbonus" Relationship="Self.Fk_BONUS" FromRole="tbrestaurante" ToRole="tbbonus" />
-    <NavigationProperty Name="tbComida" Relationship="Self.Fk_COMIDA" FromRole="tbrestaurante" ToRole="tbComida" />
     <NavigationProperty Name="tbreservas" Relationship="Self.Fk_RESERVA" FromRole="tbrestaurante" ToRole="tbreservas" />
     <NavigationProperty Name="tbreservasDetalle" Relationship="Self.Fk_ASIRES" FromRole="tbrestaurante" ToRole="tbreservasDetalle" />
     <NavigationProperty Name="tbUsuarios" Relationship="Self.Fk_CODIGO_RESTAURANTE" FromRole="tbrestaurante" ToRole="tbUsuarios" />
+    <NavigationProperty Name="tbComida" Relationship="BD_SEARCHFOODModel.Fk_COMIDA" FromRole="tbrestaurante" ToRole="tbComida" />
   </EntityType>
   <EntityType Name="tbUsuarios">
     <Key>
@@ -182,18 +168,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="Fk_CATEGORIA">
-    <End Role="tbCategorias" Type="Self.tbCategorias" Multiplicity="1" />
-    <End Role="tbComida" Type="Self.tbComida" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tbCategorias">
-        <PropertyRef Name="cateCodigo" />
-      </Principal>
-      <Dependent Role="tbComida">
-        <PropertyRef Name="cateCodigo" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="Fk_CIUDAD_PERSONA">
     <End Role="tbciudad" Type="Self.tbciudad" Multiplicity="1" />
     <End Role="tbpersona" Type="Self.tbpersona" Multiplicity="*" />
@@ -215,30 +189,6 @@
       </Principal>
       <Dependent Role="tbciudad">
         <PropertyRef Name="depaCodigo" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="Fk_COMIDA">
-    <End Role="tbrestaurante" Type="Self.tbrestaurante" Multiplicity="1" />
-    <End Role="tbComida" Type="Self.tbComida" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tbrestaurante">
-        <PropertyRef Name="restCodigo" />
-      </Principal>
-      <Dependent Role="tbComida">
-        <PropertyRef Name="restcodigo" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="Fk_RESECOM">
-    <End Role="tbComida" Type="Self.tbComida" Multiplicity="1" />
-    <End Role="tbreservasDetalle" Type="Self.tbreservasDetalle" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tbComida">
-        <PropertyRef Name="comiCodigo" />
-      </Principal>
-      <Dependent Role="tbreservasDetalle">
-        <PropertyRef Name="comiCodigo" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -342,7 +292,6 @@
     <EntitySet Name="tbbonus" EntityType="Self.tbbonus" />
     <EntitySet Name="tbCategorias" EntityType="Self.tbCategorias" />
     <EntitySet Name="tbciudad" EntityType="Self.tbciudad" />
-    <EntitySet Name="tbComida" EntityType="Self.tbComida" />
     <EntitySet Name="tbdepartamento" EntityType="Self.tbdepartamento" />
     <EntitySet Name="tbgenero" EntityType="Self.tbgenero" />
     <EntitySet Name="tbpais" EntityType="Self.tbpais" />
@@ -360,10 +309,6 @@
       <End Role="tbpersona" EntitySet="tbpersona" />
       <End Role="tbbonus" EntitySet="tbbonus" />
     </AssociationSet>
-    <AssociationSet Name="Fk_CATEGORIA" Association="Self.Fk_CATEGORIA">
-      <End Role="tbCategorias" EntitySet="tbCategorias" />
-      <End Role="tbComida" EntitySet="tbComida" />
-    </AssociationSet>
     <AssociationSet Name="Fk_CIUDAD_PERSONA" Association="Self.Fk_CIUDAD_PERSONA">
       <End Role="tbciudad" EntitySet="tbciudad" />
       <End Role="tbpersona" EntitySet="tbpersona" />
@@ -371,14 +316,6 @@
     <AssociationSet Name="Fk_DEPCIUDAD" Association="Self.Fk_DEPCIUDAD">
       <End Role="tbdepartamento" EntitySet="tbdepartamento" />
       <End Role="tbciudad" EntitySet="tbciudad" />
-    </AssociationSet>
-    <AssociationSet Name="Fk_COMIDA" Association="Self.Fk_COMIDA">
-      <End Role="tbrestaurante" EntitySet="tbrestaurante" />
-      <End Role="tbComida" EntitySet="tbComida" />
-    </AssociationSet>
-    <AssociationSet Name="Fk_RESECOM" Association="Self.Fk_RESECOM">
-      <End Role="tbComida" EntitySet="tbComida" />
-      <End Role="tbreservasDetalle" EntitySet="tbreservasDetalle" />
     </AssociationSet>
     <AssociationSet Name="Fk_PAISDEP" Association="Self.Fk_PAISDEP">
       <End Role="tbpais" EntitySet="tbpais" />
@@ -412,5 +349,68 @@
       <End Role="tbUsuarios" EntitySet="tbUsuarios" />
       <End Role="tbrestaurante" EntitySet="tbrestaurante" />
     </AssociationSet>
+    <EntitySet Name="tbComida" EntityType="BD_SEARCHFOODModel.tbComida" />
+    <AssociationSet Name="Fk_CATEGORIA" Association="BD_SEARCHFOODModel.Fk_CATEGORIA">
+      <End Role="tbCategorias" EntitySet="tbCategorias" />
+      <End Role="tbComida" EntitySet="tbComida" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_COMIDA" Association="BD_SEARCHFOODModel.Fk_COMIDA">
+      <End Role="tbrestaurante" EntitySet="tbrestaurante" />
+      <End Role="tbComida" EntitySet="tbComida" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_RESECOM" Association="BD_SEARCHFOODModel.Fk_RESECOM">
+      <End Role="tbComida" EntitySet="tbComida" />
+      <End Role="tbreservasDetalle" EntitySet="tbreservasDetalle" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="tbComida">
+    <Key>
+      <PropertyRef Name="comiCodigo" />
+    </Key>
+    <Property Name="comiCodigo" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cateCodigo" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="restcodigo" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="comiValor" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="comiDescripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="comiRutaImagen" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tbCategorias" Relationship="BD_SEARCHFOODModel.Fk_CATEGORIA" FromRole="tbComida" ToRole="tbCategorias" />
+    <NavigationProperty Name="tbrestaurante" Relationship="BD_SEARCHFOODModel.Fk_COMIDA" FromRole="tbComida" ToRole="tbrestaurante" />
+    <NavigationProperty Name="tbreservasDetalle" Relationship="BD_SEARCHFOODModel.Fk_RESECOM" FromRole="tbComida" ToRole="tbreservasDetalle" />
+  </EntityType>
+  <Association Name="Fk_CATEGORIA">
+    <End Type="BD_SEARCHFOODModel.tbCategorias" Role="tbCategorias" Multiplicity="1" />
+    <End Type="BD_SEARCHFOODModel.tbComida" Role="tbComida" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbCategorias">
+        <PropertyRef Name="cateCodigo" />
+      </Principal>
+      <Dependent Role="tbComida">
+        <PropertyRef Name="cateCodigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_COMIDA">
+    <End Type="BD_SEARCHFOODModel.tbrestaurante" Role="tbrestaurante" Multiplicity="1" />
+    <End Type="BD_SEARCHFOODModel.tbComida" Role="tbComida" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbrestaurante">
+        <PropertyRef Name="restCodigo" />
+      </Principal>
+      <Dependent Role="tbComida">
+        <PropertyRef Name="restcodigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_RESECOM">
+    <End Type="BD_SEARCHFOODModel.tbComida" Role="tbComida" Multiplicity="1" />
+    <End Type="BD_SEARCHFOODModel.tbreservasDetalle" Role="tbreservasDetalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbComida">
+        <PropertyRef Name="comiCodigo" />
+      </Principal>
+      <Dependent Role="tbreservasDetalle">
+        <PropertyRef Name="comiCodigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

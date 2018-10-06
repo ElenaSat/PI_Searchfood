@@ -8,7 +8,6 @@
         <EntityTypeShape EntityType="BD_SEARCHFOODModel.tbbonus" Width="1.5" PointX="7.5" PointY="7.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BD_SEARCHFOODModel.tbCategorias" Width="1.5" PointX="5.25" PointY="15.375" IsExpanded="true" />
         <EntityTypeShape EntityType="BD_SEARCHFOODModel.tbciudad" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="BD_SEARCHFOODModel.tbComida" Width="1.5" PointX="7.5" PointY="10.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BD_SEARCHFOODModel.tbdepartamento" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BD_SEARCHFOODModel.tbgenero" Width="1.5" PointX="3" PointY="10.25" IsExpanded="true" />
         <EntityTypeShape EntityType="BD_SEARCHFOODModel.tbpais" Width="1.5" PointX="1.5" PointY="0.75" IsExpanded="true" />
@@ -20,11 +19,8 @@
         <EntityTypeShape EntityType="BD_SEARCHFOODModel.tbUsuarios" Width="1.5" PointX="3" PointY="6.5" IsExpanded="true" />
         <AssociationConnector Association="BD_SEARCHFOODModel.Fk_BONUS" ManuallyRouted="false" />
         <AssociationConnector Association="BD_SEARCHFOODModel.Fk_BONUSS" ManuallyRouted="false" />
-        <AssociationConnector Association="BD_SEARCHFOODModel.Fk_CATEGORIA" ManuallyRouted="false" />
         <AssociationConnector Association="BD_SEARCHFOODModel.Fk_CIUDAD_PERSONA" ManuallyRouted="false" />
         <AssociationConnector Association="BD_SEARCHFOODModel.Fk_DEPCIUDAD" ManuallyRouted="false" />
-        <AssociationConnector Association="BD_SEARCHFOODModel.Fk_COMIDA" ManuallyRouted="false" />
-        <AssociationConnector Association="BD_SEARCHFOODModel.Fk_RESECOM" ManuallyRouted="false" />
         <AssociationConnector Association="BD_SEARCHFOODModel.Fk_PAISDEP" ManuallyRouted="false" />
         <AssociationConnector Association="BD_SEARCHFOODModel.Fk_GENERO_PERSONA" ManuallyRouted="false" />
         <AssociationConnector Association="BD_SEARCHFOODModel.Fk_USUARIOS" ManuallyRouted="false" />
@@ -33,6 +29,10 @@
         <AssociationConnector Association="BD_SEARCHFOODModel.Fk_RESERVA" ManuallyRouted="false" />
         <AssociationConnector Association="BD_SEARCHFOODModel.Fk_ASIRES" ManuallyRouted="false" />
         <AssociationConnector Association="BD_SEARCHFOODModel.Fk_CODIGO_RESTAURANTE" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="BD_SEARCHFOODModel.tbComida" Width="1.5" PointX="7.5" PointY="12.125" />
+        <AssociationConnector Association="BD_SEARCHFOODModel.Fk_CATEGORIA" />
+        <AssociationConnector Association="BD_SEARCHFOODModel.Fk_COMIDA" />
+        <AssociationConnector Association="BD_SEARCHFOODModel.Fk_RESECOM" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
