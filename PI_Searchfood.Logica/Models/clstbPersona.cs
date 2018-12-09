@@ -4,6 +4,7 @@ namespace PI_Searchfood.Logica.Models
 {
    public class clstbPersona
     {
+        
         public long longpersIdentificacion { get; set; }
         public string stpersNombre { get; set; }
         public string stpersApellido { get; set; }

@@ -1,9 +1,3 @@
-B:\2018-2019  Francia\WEBI\PI\PI_Searchfood\PI_Searchfood.WS\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
-B:\2018-2019  Francia\WEBI\PI\PI_Searchfood\PI_Searchfood.WS\bin\roslyn\Microsoft.CodeAnalysis.dll
-B:\2018-2019  Francia\WEBI\PI\PI_Searchfood\PI_Searchfood.WS\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
-B:\2018-2019  Francia\WEBI\PI\PI_Searchfood\PI_Searchfood.WS\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
-B:\2018-2019  Francia\WEBI\PI\PI_Searchfood\PI_Searchfood.WS\bin\roslyn\System.IO.Compression.dll
-B:\2018-2019  Francia\WEBI\PI\PI_Searchfood\PI_Searchfood.WS\bin\roslyn\VBCSCompiler.exe
 B:\2018-2019  Francia\WEBI\PI\PI_Searchfood\PI_Searchfood.WS\bin\PI_Searchfood.WS.dll.config
 B:\2018-2019  Francia\WEBI\PI\PI_Searchfood\PI_Searchfood.WS\bin\PI_Searchfood.WS.dll
 B:\2018-2019  Francia\WEBI\PI\PI_Searchfood\PI_Searchfood.WS\bin\PI_Searchfood.WS.pdb
@@ -14,9 +8,13 @@ B:\2018-2019  Francia\WEBI\PI\PI_Searchfood\PI_Searchfood.WS\bin\roslyn\csi.exe
 B:\2018-2019  Francia\WEBI\PI\PI_Searchfood\PI_Searchfood.WS\bin\roslyn\csi.exe.config
 B:\2018-2019  Francia\WEBI\PI\PI_Searchfood\PI_Searchfood.WS\bin\roslyn\csi.rsp
 B:\2018-2019  Francia\WEBI\PI\PI_Searchfood\PI_Searchfood.WS\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+B:\2018-2019  Francia\WEBI\PI\PI_Searchfood\PI_Searchfood.WS\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
 B:\2018-2019  Francia\WEBI\PI\PI_Searchfood\PI_Searchfood.WS\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+B:\2018-2019  Francia\WEBI\PI\PI_Searchfood\PI_Searchfood.WS\bin\roslyn\Microsoft.CodeAnalysis.dll
 B:\2018-2019  Francia\WEBI\PI\PI_Searchfood\PI_Searchfood.WS\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+B:\2018-2019  Francia\WEBI\PI\PI_Searchfood\PI_Searchfood.WS\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
 B:\2018-2019  Francia\WEBI\PI\PI_Searchfood\PI_Searchfood.WS\bin\roslyn\Microsoft.CSharp.Core.targets
+B:\2018-2019  Francia\WEBI\PI\PI_Searchfood\PI_Searchfood.WS\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
 B:\2018-2019  Francia\WEBI\PI\PI_Searchfood\PI_Searchfood.WS\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
 B:\2018-2019  Francia\WEBI\PI\PI_Searchfood\PI_Searchfood.WS\bin\roslyn\Microsoft.VisualBasic.Core.targets
 B:\2018-2019  Francia\WEBI\PI\PI_Searchfood\PI_Searchfood.WS\bin\roslyn\Microsoft.Win32.Primitives.dll
@@ -26,6 +24,7 @@ B:\2018-2019  Francia\WEBI\PI\PI_Searchfood\PI_Searchfood.WS\bin\roslyn\System.C
 B:\2018-2019  Francia\WEBI\PI\PI_Searchfood\PI_Searchfood.WS\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
 B:\2018-2019  Francia\WEBI\PI\PI_Searchfood\PI_Searchfood.WS\bin\roslyn\System.Diagnostics.Process.dll
 B:\2018-2019  Francia\WEBI\PI\PI_Searchfood\PI_Searchfood.WS\bin\roslyn\System.Diagnostics.StackTrace.dll
+B:\2018-2019  Francia\WEBI\PI\PI_Searchfood\PI_Searchfood.WS\bin\roslyn\System.IO.Compression.dll
 B:\2018-2019  Francia\WEBI\PI\PI_Searchfood\PI_Searchfood.WS\bin\roslyn\System.IO.FileSystem.dll
 B:\2018-2019  Francia\WEBI\PI\PI_Searchfood\PI_Searchfood.WS\bin\roslyn\System.IO.FileSystem.DriveInfo.dll
 B:\2018-2019  Francia\WEBI\PI\PI_Searchfood\PI_Searchfood.WS\bin\roslyn\System.IO.FileSystem.Primitives.dll
@@ -48,6 +47,7 @@ B:\2018-2019  Francia\WEBI\PI\PI_Searchfood\PI_Searchfood.WS\bin\roslyn\System.X
 B:\2018-2019  Francia\WEBI\PI\PI_Searchfood\PI_Searchfood.WS\bin\roslyn\vbc.exe
 B:\2018-2019  Francia\WEBI\PI\PI_Searchfood\PI_Searchfood.WS\bin\roslyn\vbc.exe.config
 B:\2018-2019  Francia\WEBI\PI\PI_Searchfood\PI_Searchfood.WS\bin\roslyn\vbc.rsp
+B:\2018-2019  Francia\WEBI\PI\PI_Searchfood\PI_Searchfood.WS\bin\roslyn\VBCSCompiler.exe
 B:\2018-2019  Francia\WEBI\PI\PI_Searchfood\PI_Searchfood.WS\bin\roslyn\VBCSCompiler.exe.config
 B:\2018-2019  Francia\WEBI\PI\PI_Searchfood\PI_Searchfood.WS\bin\EntityFramework.dll
 B:\2018-2019  Francia\WEBI\PI\PI_Searchfood\PI_Searchfood.WS\bin\EntityFramework.SqlServer.dll

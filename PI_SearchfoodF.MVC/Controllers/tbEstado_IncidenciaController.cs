@@ -1,0 +1,58 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
+using System.Linq;
+using System.Net;
+using System.Web;
+using System.Web.Mvc;
+using PI_SearchfoodF.MVC.DAL;
+
+namespace PI_SearchfoodF.MVC.Controllers
+{
+    public class tbEstado_IncidenciaController : Controller
+    {
+             // GET: Incidencia
+        public ActionResult Index()
+        {
+            BL.clsIncidencia incidencias = new BL.clsIncidencia();
+            List<Models.Incidencia> lista_incidencias = incidencias.GetIncidencias();
+
+            BL.clsEstadoIncidencia estado_incidencias = new BL.clsEstadoIncidencia();
+            List<Models.tbEstadoIncidencia> lista_estado_incidencia = estado_incidencias.GetEstadoIncidencia();
+
+            BL.clsTipoIncidencia tipo_incidencias = new BL.clsTipoIncidencia();
+            List<Models.TipoIncidencia> lista_tipo_incidencia = tipo_incidencias.GetTipoIncidencia();
+
+            var IndexLoad = new Models.Incidencia.IndexLoad
+            {
+                Incidencias = lista_incidencias,
+                EstadoIncidencias = lista_estado_incidencia,
+                TipoIncidencias = lista_tipo_incidencia
+            };
+
+            return View(IndexLoad);
+        }
+
+        //POST Incidencia/Create
+        [HttpPost]
+        public ActionResult Create(Models.Incidencia incidencia)
+        {
+            try
+            {
+                BL.clsIncidencia incidencias = new BL.clsIncidencia();
+                incidencias.CreateIncidencia(incidencia);
+
+                var json = Json(new
+                {
+                    Mensaje = "Se realizo proceso con exito"
+                });
+                json.MaxJsonLength = 500000000;
+
+                return json;
+            }
+            catch (Exception ex) { throw ex; }
+        }
+
+    }
+}

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fc9cc5c8e7a4416f9c93925837037a54" Name="Diagram1">
+        <EntityTypeShape EntityType="BD_SEARCHFOODModel.tbEstado_Incidencia" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_SEARCHFOODModel.tbIncidencia" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_SEARCHFOODModel.tbIncidencia_Comentarios" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_SEARCHFOODModel.tbTipoIncidencia" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="BD_SEARCHFOODModel.FK_tbIncidencia_Comentarios_tbEstado_Incidencia" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_SEARCHFOODModel.FK_tbIncidencia_tbEstado_Incidencia" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_SEARCHFOODModel.FK_tbIncidencia_Comentarios_tbIncidencia" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_SEARCHFOODModel.FK_tbIncidencia_tbTipoIncidencia" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -11,7 +11,8 @@ namespace PI_Searchfood.Views.Restaurante
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            getComida_XML();
+            //getComida_XML();
+            getComida();
         }
 
         public void getComida() {

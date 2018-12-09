@@ -11,24 +11,31 @@ namespace PI_Searchfood.Test
         public void createComidaWS()
         {
             //ARRANGE
-            wsServicios.wsServicios obwsServicios = new wsServicios.wsServicios();
+            wsServicios.wsServicios obwsServicios = NewMethod();
             //ACT
             Logica.Models.clstbComida obclstbComidaModel = new Logica.Models.clstbComida
             {
-                loncomiValor=45000, 
-                obclstbCategoria= new Logica.Models.clstbCategoria {
-                    longcateCodigo=1,
+                loncomiValor = 45000,
+                obclstbCategoria = new Logica.Models.clstbCategoria
+                {
+                    longcateCodigo = 1,
                 },
-                obclstbRestaurante= new Logica.Models.clstbRestaurante {
-                    longrestCodigo= 313131,
+                obclstbRestaurante = new Logica.Models.clstbRestaurante
+                {
+                    longrestCodigo = 313131,
                 },
-                strcomiDescripcion="ARROZ CON POLLO",
-                strcomiRutaImagen=null,
+                strcomiDescripcion = "ARROZ CON POLLO",
+                strcomiRutaImagen = null,
             };
 
             string json = JsonConvert.SerializeObject(obclstbComidaModel);
             //ASSERT
             obwsServicios.createComidaWS(json);
+        }
+
+        private static wsServicios.wsServicios NewMethod()
+        {
+            return new wsServicios.wsServicios();
         }
     }
 }

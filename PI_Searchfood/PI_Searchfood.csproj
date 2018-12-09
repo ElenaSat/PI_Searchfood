@@ -15,7 +15,7 @@
     <RootNamespace>PI_Searchfood</RootNamespace>
     <AssemblyName>PI_Searchfood</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -79,7 +79,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Images\DfImages\defualt.png" />
+    <Content Include="Images\DfImages\sap.PNG" />
+    <Content Include="Images\p1.jpg" />
+    <Content Include="Images\Restaurantes\Menu\01.jpg" />
+    <Content Include="Images\Restaurantes\Menu\02.jpg" />
+    <Content Include="Images\Restaurantes\Menu\03.jpg" />
+    <Content Include="Images\Restaurantes\Menu\04.jpg" />
+    <Content Include="js\demo\chart-area-demo.js" />
+    <Content Include="js\demo\chart-bar-demo.js" />
+    <Content Include="js\demo\chart-pie-demo.js" />
+    <Content Include="js\demo\datatables-demo.js" />
     <Content Include="js\locationpicker.jquery.js" />
+    <Content Include="js\popper.js" />
     <Content Include="packages.config" />
     <Content Include="obj\Debug\CoreCompileInputs.cache" />
     <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
@@ -129,11 +140,18 @@
     <Content Include="Resources\Template\Administrador.Master" />
     <Content Include="Resources\Template\Cliente.Master" />
     <Content Include="Resources\Template\Restaurantes.Master" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Content Include="Views\Administrador\Index\Busquedad.aspx" />
     <Content Include="Views\Cliente\Busquedad.aspx" />
+    <Content Include="Views\Cliente\ConfiguracionC.aspx" />
+    <Content Include="Views\Restaurante\AdminBonos.aspx" />
+    <Content Include="Views\Restaurante\AdminReservas.aspx" />
+    <Content Include="Views\Restaurante\ConfiguracionR.aspx" />
+    <Content Include="Views\Restaurante\RestauranteCliente.aspx" />
     <Content Include="Views\Restaurante\TablaComida.aspx" />
     <Content Include="Web References\wsServicios\clstbComida.datasource">
       <DependentUpon>Reference.map</DependentUpon>
@@ -213,6 +231,7 @@
     <Compile Include="Controller\AdministrarComidaController.cs" />
     <Compile Include="Controller\AdministrarPersonaController.cs" />
     <Compile Include="Controller\AdministrarRestauranteController.cs" />
+    <Compile Include="Controller\BuscadorController.cs" />
     <Compile Include="Controller\LoginController.cs" />
     <Compile Include="Controller\RecuperarPasswordController.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
@@ -248,6 +267,13 @@
     <Compile Include="Servicios\wsConsulta.asmx.cs">
       <DependentUpon>wsConsulta.asmx</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\Administrador\Index\Busquedad.aspx.cs">
+      <DependentUpon>Busquedad.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Administrador\Index\Busquedad.aspx.designer.cs">
+      <DependentUpon>Busquedad.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Administrador\Index\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -305,12 +331,40 @@
     <Compile Include="Views\Cliente\Busquedad.aspx.designer.cs">
       <DependentUpon>Busquedad.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Cliente\ConfiguracionC.aspx.cs">
+      <DependentUpon>ConfiguracionC.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Cliente\ConfiguracionC.aspx.designer.cs">
+      <DependentUpon>ConfiguracionC.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\Cliente\indexCliente.aspx.cs">
       <DependentUpon>indexCliente.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Views\Cliente\indexCliente.aspx.designer.cs">
       <DependentUpon>indexCliente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Restaurante\AdminBonos.aspx.cs">
+      <DependentUpon>AdminBonos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Restaurante\AdminBonos.aspx.designer.cs">
+      <DependentUpon>AdminBonos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Restaurante\AdminReservas.aspx.cs">
+      <DependentUpon>AdminReservas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Restaurante\AdminReservas.aspx.designer.cs">
+      <DependentUpon>AdminReservas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Restaurante\ConfiguracionR.aspx.cs">
+      <DependentUpon>ConfiguracionR.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Restaurante\ConfiguracionR.aspx.designer.cs">
+      <DependentUpon>ConfiguracionR.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Restaurante\indexRestaurante.aspx.cs">
       <DependentUpon>indexRestaurante.aspx</DependentUpon>
@@ -325,6 +379,13 @@
     </Compile>
     <Compile Include="Views\Restaurante\Menu.aspx.designer.cs">
       <DependentUpon>Menu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Restaurante\RestauranteCliente.aspx.cs">
+      <DependentUpon>RestauranteCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Restaurante\RestauranteCliente.aspx.designer.cs">
+      <DependentUpon>RestauranteCliente.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Restaurante\TablaComida.aspx.cs">
       <DependentUpon>TablaComida.aspx</DependentUpon>
@@ -341,7 +402,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Images\Personas\" />
-    <Folder Include="Images\Restaurantes\Menu\" />
     <Folder Include="obj\Debug\TempPE\" />
     <Folder Include="tmp\" />
   </ItemGroup>
@@ -385,7 +445,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>57200</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:57200/</IISUrl>
+          <IISUrl>http://localhost/PI_Searchfood</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

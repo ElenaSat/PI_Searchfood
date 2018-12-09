@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BD_SEARCHFOODModelStoreContainer" CdmEntityContainer="BD_SEARCHFOODEntities">
+    <EntitySetMapping Name="tbEstado_Incidencia">
+      <EntityTypeMapping TypeName="BD_SEARCHFOODModel.tbEstado_Incidencia">
+        <MappingFragment StoreEntitySet="tbEstado_Incidencia">
+          <ScalarProperty Name="Id_EstdIncidencia" ColumnName="Id_EstdIncidencia" />
+          <ScalarProperty Name="EstdDescripcion" ColumnName="EstdDescripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbIncidencia">
+      <EntityTypeMapping TypeName="BD_SEARCHFOODModel.tbIncidencia">
+        <MappingFragment StoreEntitySet="tbIncidencia">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Identificacion" ColumnName="Identificacion" />
+          <ScalarProperty Name="primer_nombre" ColumnName="primer_nombre" />
+          <ScalarProperty Name="segundo_nombrre" ColumnName="segundo_nombrre" />
+          <ScalarProperty Name="primer_apellido" ColumnName="primer_apellido" />
+          <ScalarProperty Name="segundo_apellido" ColumnName="segundo_apellido" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="correo" ColumnName="correo" />
+          <ScalarProperty Name="Estado_Indicencia" ColumnName="Estado_Indicencia" />
+          <ScalarProperty Name="Tipo_Incidencia" ColumnName="Tipo_Incidencia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbIncidencia_Comentarios">
+      <EntityTypeMapping TypeName="BD_SEARCHFOODModel.tbIncidencia_Comentarios">
+        <MappingFragment StoreEntitySet="tbIncidencia_Comentarios">
+          <ScalarProperty Name="Id_ICom" ColumnName="Id_ICom" />
+          <ScalarProperty Name="Id_Incidencia" ColumnName="Id_Incidencia" />
+          <ScalarProperty Name="Comentarios" ColumnName="Comentarios" />
+          <ScalarProperty Name="Estado_Incidencia_IDCom" ColumnName="Estado_Incidencia_IDCom" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbTipoIncidencia">
+      <EntityTypeMapping TypeName="BD_SEARCHFOODModel.tbTipoIncidencia">
+        <MappingFragment StoreEntitySet="tbTipoIncidencia">
+          <ScalarProperty Name="Id_TipoIncidencia" ColumnName="Id_TipoIncidencia" />
+          <ScalarProperty Name="TipoInDescripcion" ColumnName="TipoInDescripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

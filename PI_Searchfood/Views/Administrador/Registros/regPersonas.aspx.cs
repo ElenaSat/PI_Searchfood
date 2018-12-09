@@ -17,6 +17,7 @@ namespace PI_Searchfood.Views.Administrador.Registros
 
                 if (dsConsulta.Tables[0].Rows.Count > 0) { gvwDatos.DataSource = dsConsulta; }
                 else { gvwDatos.DataSource = null; }
+
                 gvwDatos.DataBind();
                 DataSet dsConsultarGenero = obAdministrarPersonaController.getConsultarGeneroController();
                 ddlGenero.DataSource = dsConsultarGenero;

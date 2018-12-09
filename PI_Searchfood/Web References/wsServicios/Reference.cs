@@ -33,6 +33,12 @@ namespace PI_Searchfood.wsServicios {
         
         private System.Threading.SendOrPostCallback getComida_XMLOperationCompleted;
         
+        private System.Threading.SendOrPostCallback createComidaWSOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback updateComidaWSOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback deleteComidaWSOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -76,6 +82,15 @@ namespace PI_Searchfood.wsServicios {
         
         /// <remarks/>
         public event getComida_XMLCompletedEventHandler getComida_XMLCompleted;
+        
+        /// <remarks/>
+        public event createComidaWSCompletedEventHandler createComidaWSCompleted;
+        
+        /// <remarks/>
+        public event updateComidaWSCompletedEventHandler updateComidaWSCompleted;
+        
+        /// <remarks/>
+        public event deleteComidaWSCompletedEventHandler deleteComidaWSCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getComida", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -128,6 +143,90 @@ namespace PI_Searchfood.wsServicios {
             if ((this.getComida_XMLCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.getComida_XMLCompleted(this, new getComida_XMLCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/createComidaWS", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void createComidaWS(string stclstbComida) {
+            this.Invoke("createComidaWS", new object[] {
+                        stclstbComida});
+        }
+        
+        /// <remarks/>
+        public void createComidaWSAsync(string stclstbComida) {
+            this.createComidaWSAsync(stclstbComida, null);
+        }
+        
+        /// <remarks/>
+        public void createComidaWSAsync(string stclstbComida, object userState) {
+            if ((this.createComidaWSOperationCompleted == null)) {
+                this.createComidaWSOperationCompleted = new System.Threading.SendOrPostCallback(this.OncreateComidaWSOperationCompleted);
+            }
+            this.InvokeAsync("createComidaWS", new object[] {
+                        stclstbComida}, this.createComidaWSOperationCompleted, userState);
+        }
+        
+        private void OncreateComidaWSOperationCompleted(object arg) {
+            if ((this.createComidaWSCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.createComidaWSCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/updateComidaWS", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void updateComidaWS(string stclstbComida) {
+            this.Invoke("updateComidaWS", new object[] {
+                        stclstbComida});
+        }
+        
+        /// <remarks/>
+        public void updateComidaWSAsync(string stclstbComida) {
+            this.updateComidaWSAsync(stclstbComida, null);
+        }
+        
+        /// <remarks/>
+        public void updateComidaWSAsync(string stclstbComida, object userState) {
+            if ((this.updateComidaWSOperationCompleted == null)) {
+                this.updateComidaWSOperationCompleted = new System.Threading.SendOrPostCallback(this.OnupdateComidaWSOperationCompleted);
+            }
+            this.InvokeAsync("updateComidaWS", new object[] {
+                        stclstbComida}, this.updateComidaWSOperationCompleted, userState);
+        }
+        
+        private void OnupdateComidaWSOperationCompleted(object arg) {
+            if ((this.updateComidaWSCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.updateComidaWSCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/deleteComidaWS", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void deleteComidaWS(string stclstbComida) {
+            this.Invoke("deleteComidaWS", new object[] {
+                        stclstbComida});
+        }
+        
+        /// <remarks/>
+        public void deleteComidaWSAsync(string stclstbComida) {
+            this.deleteComidaWSAsync(stclstbComida, null);
+        }
+        
+        /// <remarks/>
+        public void deleteComidaWSAsync(string stclstbComida, object userState) {
+            if ((this.deleteComidaWSOperationCompleted == null)) {
+                this.deleteComidaWSOperationCompleted = new System.Threading.SendOrPostCallback(this.OndeleteComidaWSOperationCompleted);
+            }
+            this.InvokeAsync("deleteComidaWS", new object[] {
+                        stclstbComida}, this.deleteComidaWSOperationCompleted, userState);
+        }
+        
+        private void OndeleteComidaWSOperationCompleted(object arg) {
+            if ((this.deleteComidaWSCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.deleteComidaWSCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -672,6 +771,18 @@ namespace PI_Searchfood.wsServicios {
             }
         }
     }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    public delegate void createComidaWSCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    public delegate void updateComidaWSCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    public delegate void deleteComidaWSCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
 }
 
 #pragma warning restore 1591

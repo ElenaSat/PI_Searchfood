@@ -15,20 +15,20 @@ namespace PI_Searchfood.Logica.BL
 
                     List<Models.clstbComida> lstclstbComida = (from q in obDatos.tbComida
                                                                join tbCate in obDatos.tbCategorias on q.cateCodigo equals tbCate.cateCodigo
-                                                                      select new Models.clstbComida
-                                                                      {
-                                                                          longcomiCodigo = (long) q.comiCodigo,
-                                                                          loncomiValor= (long) q.comiValor,
-                                                                          obclstbCategoria= new Models.clstbCategoria {
-                                                                              longcateCodigo= (long) q.cateCodigo,
-                                                                              strcateDescripcion= tbCate.cateDescripcion
-                                                                          },
-                                                                          obclstbRestaurante= new Models.clstbRestaurante {
-                                                                              longrestCodigo= (long) q.restcodigo
-                                                                          },
-                                                                          strcomiDescripcion=q.comiDescripcion,
-                                                                          strcomiRutaImagen=q.comiRutaImagen
-                                                                      }).ToList();
+                                                               select new Models.clstbComida
+                                                               {
+                                                                   longcomiCodigo = (long)q.comiCodigo,
+                                                                   loncomiValor = (long)q.comiValor,
+                                                                   obclstbCategoria = new Models.clstbCategoria {
+                                                                       longcateCodigo = (long)q.cateCodigo,
+                                                                       strcateDescripcion = tbCate.cateDescripcion
+                                                                   },
+                                                                   obclstbRestaurante = new Models.clstbRestaurante {
+                                                                       longrestCodigo = (long)q.restcodigo
+                                                                   },
+                                                                   strcomiDescripcion = q.comiDescripcion,
+                                                                   strcomiRutaImagen = q.comiRutaImagen
+                                                               }).ToList();
                     return lstclstbComida;
                 }
 
@@ -36,7 +36,7 @@ namespace PI_Searchfood.Logica.BL
             catch (Exception ex)
             {
                 throw ex;
-              
+
             }
 
 
@@ -44,14 +44,14 @@ namespace PI_Searchfood.Logica.BL
 
         public List<Models.clstbComida> getConsultarComida(string stNombreCompleto)
         {
-           
+
             try
             {
                 using (Entidades.BD_SEARCHFOODEntities1 obDatos = new Entidades.BD_SEARCHFOODEntities1())
                 {
 
                     List<Models.clstbComida> lstclstbComida = (from q in obDatos.tbComida
-                                                               where (q.comiCodigo+ " "+ q.comiDescripcion ).Contains(stNombreCompleto)
+                                                               where (q.comiCodigo + " " +q.comiDescripcion).Contains(stNombreCompleto)
                                                                select new Models.clstbComida
                                                                {
                                                                    longcomiCodigo = (long)q.comiCodigo,
@@ -85,14 +85,14 @@ namespace PI_Searchfood.Logica.BL
         public void createComida(Models.clstbComida obclstbComida) {
             try
             {
-                using (Entidades.BD_SEARCHFOODEntities1 obDatos= new Entidades.BD_SEARCHFOODEntities1 ()) {
+                using (Entidades.BD_SEARCHFOODEntities1 obDatos = new Entidades.BD_SEARCHFOODEntities1()) {
 
-                    obDatos.tbComida.Add( new Entidades.tbComida{
-                       cateCodigo=obclstbComida.obclstbCategoria.longcateCodigo,
-                       restcodigo=obclstbComida.obclstbRestaurante.longrestCodigo,
-                       comiValor=obclstbComida.loncomiValor,
-                       comiDescripcion=obclstbComida.strcomiDescripcion,
-                       comiRutaImagen=obclstbComida.strcomiRutaImagen
+                    obDatos.tbComida.Add(new Entidades.tbComida {
+                        cateCodigo = obclstbComida.obclstbCategoria.longcateCodigo,
+                        restcodigo = obclstbComida.obclstbRestaurante.longrestCodigo,
+                        comiValor = obclstbComida.loncomiValor,
+                        comiDescripcion = obclstbComida.strcomiDescripcion,
+                        comiRutaImagen = obclstbComida.strcomiRutaImagen
                     });
                     obDatos.SaveChanges();
 
@@ -155,5 +155,29 @@ namespace PI_Searchfood.Logica.BL
 
 
         }
+
+        public List<Models.clstbCategoria> GetCategorias() {
+            try
+            {
+                using (Entidades.BD_SEARCHFOODEntities1 obDatos = new Entidades.BD_SEARCHFOODEntities1())
+                {
+
+                    List<Models.clstbCategoria> lstbCategorias = (from q in obDatos.tbCategorias
+                                                                  select new Models.clstbCategoria {
+                                                                      longcateCodigo = (long)q.cateCodigo,
+                                                                      strcateDescripcion = q.cateDescripcion
+                                                                  }).ToList();
+                    return lstbCategorias;
+                }
+            }
+            catch (Exception exe)
+            {
+
+                throw exe;
+            }
+        }
+
+
+       
     }
 }

@@ -89,6 +89,36 @@
           <s:element minOccurs="0" maxOccurs="1" name="stImagen" type="s:string" />
         </s:sequence>
       </s:complexType>
+      <s:element name="createComidaWS">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="stclstbComida" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="createComidaWSResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="updateComidaWS">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="stclstbComida" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateComidaWSResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="deleteComidaWS">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="stclstbComida" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteComidaWSResponse">
+        <s:complexType />
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="getComidaSoapIn">
@@ -103,6 +133,24 @@
   <wsdl:message name="getComida_XMLSoapOut">
     <wsdl:part name="parameters" element="tns:getComida_XMLResponse" />
   </wsdl:message>
+  <wsdl:message name="createComidaWSSoapIn">
+    <wsdl:part name="parameters" element="tns:createComidaWS" />
+  </wsdl:message>
+  <wsdl:message name="createComidaWSSoapOut">
+    <wsdl:part name="parameters" element="tns:createComidaWSResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateComidaWSSoapIn">
+    <wsdl:part name="parameters" element="tns:updateComidaWS" />
+  </wsdl:message>
+  <wsdl:message name="updateComidaWSSoapOut">
+    <wsdl:part name="parameters" element="tns:updateComidaWSResponse" />
+  </wsdl:message>
+  <wsdl:message name="deleteComidaWSSoapIn">
+    <wsdl:part name="parameters" element="tns:deleteComidaWS" />
+  </wsdl:message>
+  <wsdl:message name="deleteComidaWSSoapOut">
+    <wsdl:part name="parameters" element="tns:deleteComidaWSResponse" />
+  </wsdl:message>
   <wsdl:portType name="wsServiciosSoap">
     <wsdl:operation name="getComida">
       <wsdl:input message="tns:getComidaSoapIn" />
@@ -111,6 +159,18 @@
     <wsdl:operation name="getComida_XML">
       <wsdl:input message="tns:getComida_XMLSoapIn" />
       <wsdl:output message="tns:getComida_XMLSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="createComidaWS">
+      <wsdl:input message="tns:createComidaWSSoapIn" />
+      <wsdl:output message="tns:createComidaWSSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updateComidaWS">
+      <wsdl:input message="tns:updateComidaWSSoapIn" />
+      <wsdl:output message="tns:updateComidaWSSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteComidaWS">
+      <wsdl:input message="tns:deleteComidaWSSoapIn" />
+      <wsdl:output message="tns:deleteComidaWSSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="wsServiciosSoap" type="tns:wsServiciosSoap">
@@ -133,6 +193,33 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="createComidaWS">
+      <soap:operation soapAction="http://tempuri.org/createComidaWS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateComidaWS">
+      <soap:operation soapAction="http://tempuri.org/updateComidaWS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteComidaWS">
+      <soap:operation soapAction="http://tempuri.org/deleteComidaWS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="wsServiciosSoap12" type="tns:wsServiciosSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -147,6 +234,33 @@
     </wsdl:operation>
     <wsdl:operation name="getComida_XML">
       <soap12:operation soapAction="http://tempuri.org/getComida_XML" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createComidaWS">
+      <soap12:operation soapAction="http://tempuri.org/createComidaWS" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateComidaWS">
+      <soap12:operation soapAction="http://tempuri.org/updateComidaWS" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteComidaWS">
+      <soap12:operation soapAction="http://tempuri.org/deleteComidaWS" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

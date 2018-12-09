@@ -1,0 +1,20 @@
+﻿@model PI_SearchfoodF.MVC.DAL.tbTipoIncidencia
+@{
+    ViewBag.Title = "Details";
+}
+<div>
+    <h4>Detalles</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoInDescripcion)
+        </dt>
+        <dd>
+            @Html.EditorFor(model => model.TipoInDescripcion, new { htmlAttributes = new { @class = "form-control" } })
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id_TipoIncidencia }, new { @class = "btn btn-primary btn-sm" }) |
+    @Html.ActionLink("Volver", "Index", null, new { @class = "btn btn-primary btn-sm" })
+</p>

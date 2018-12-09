@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using Newtonsoft.Json;
@@ -40,6 +41,18 @@ namespace PI_Searchfood.Controller
             }
 
         }
+        public List<Logica.Models.clstbCategoria> getConsultarCategoria() {
+            try
+            {
+                PI_Searchfood.Logica.BL.clsComida obclsAdministracionComida = new Logica.BL.clsComida();
+                return obclsAdministracionComida.GetCategorias();
+
+            }
+            catch (Exception ex) { throw ex; }
+
+        }
+
+      
 
     }
 }

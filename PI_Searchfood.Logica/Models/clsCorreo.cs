@@ -16,7 +16,6 @@
         public int stPuerto { get; set; }
         public string stImagen { get; set; }
         public string stIdImagen { get; set; }
-
-
+        
     }
 }

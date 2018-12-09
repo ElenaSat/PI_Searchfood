@@ -7,9 +7,7 @@ using System.Threading.Tasks;
 namespace PI_Searchfood.Logica.Models
 {
   public  class clstbRestaurante
-    {
-
-        public long longrestCodigo { set; get; }
+    {   public long longrestCodigo { set; get; }
         public string strrestNombre { set; get; }
         public string strrestDireccion { set; get; }
         public string strrestTelefono { set; get; }

@@ -44,8 +44,8 @@
                                 <div class="">
                                     <div class="col-md-12">
                                         <div class="text-center">
-                                            <a class="d-block small mt-3" href="../Registrar/Registrar.aspx">Registrar Cuenta</a>
-                                            <a class="d-block small" href="../Recuperar Password/Recuperar Password.aspx">Olvido su contraseña?</a>
+                                            <a class="d-block small mt-3" href="#">Registrar Cuenta</a>
+                                            <a class="d-block small" href="../RecuperarPassword/RecuperarPasswordF.aspx">Olvido su contraseña?</a>
                                         </div>
                                     </div>
                                 </div>
@@ -60,7 +60,7 @@
         <div class="col-sm-4">
             <div class="card mx-auto m-5">
                 <div class="card-body">
-                    <h5 class="card-title">Comunidad SearchFood</h5>
+                    <h5 class="card-title">Comunidad SearchFood o Vimons</h5>
                     <p class="card-text">
                         ¿No haces parte de nuestra comunidad aún?
                         <br />

@@ -1,0 +1,14 @@
+B:\2018-2019  Francia\WEBI\PI\PI_Searchfood\PI_Searchfood.Logica\bin\Release\PI_Searchfood.Logica.dll.config
+B:\2018-2019  Francia\WEBI\PI\PI_Searchfood\PI_Searchfood.Logica\bin\Release\PI_Searchfood.Logica.dll
+B:\2018-2019  Francia\WEBI\PI\PI_Searchfood\PI_Searchfood.Logica\bin\Release\PI_Searchfood.Logica.pdb
+B:\2018-2019  Francia\WEBI\PI\PI_Searchfood\PI_Searchfood.Logica\bin\Release\EntityFramework.dll
+B:\2018-2019  Francia\WEBI\PI\PI_Searchfood\PI_Searchfood.Logica\bin\Release\EntityFramework.SqlServer.dll
+B:\2018-2019  Francia\WEBI\PI\PI_Searchfood\PI_Searchfood.Logica\bin\Release\Newtonsoft.Json.dll
+B:\2018-2019  Francia\WEBI\PI\PI_Searchfood\PI_Searchfood.Logica\bin\Release\EntityFramework.xml
+B:\2018-2019  Francia\WEBI\PI\PI_Searchfood\PI_Searchfood.Logica\bin\Release\EntityFramework.SqlServer.xml
+B:\2018-2019  Francia\WEBI\PI\PI_Searchfood\PI_Searchfood.Logica\bin\Release\Newtonsoft.Json.xml
+B:\2018-2019  Francia\WEBI\PI\PI_Searchfood\PI_Searchfood.Logica\obj\Release\PI_Searchfood.Logica.csproj.CoreCompileInputs.cache
+B:\2018-2019  Francia\WEBI\PI\PI_Searchfood\PI_Searchfood.Logica\obj\Release\PI_Searchfood.Logica.csproj.CopyComplete
+B:\2018-2019  Francia\WEBI\PI\PI_Searchfood\PI_Searchfood.Logica\obj\Release\PI_Searchfood.Logica.dll
+B:\2018-2019  Francia\WEBI\PI\PI_Searchfood\PI_Searchfood.Logica\obj\Release\PI_Searchfood.Logica.pdb
+B:\2018-2019  Francia\WEBI\PI\PI_Searchfood\PI_Searchfood.Logica\obj\Release\PI_Searchfood.Logica.csprojAssemblyReference.cache

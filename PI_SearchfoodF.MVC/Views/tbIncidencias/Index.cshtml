@@ -1,0 +1,87 @@
+﻿@model IEnumerable<PI_SearchfoodF.MVC.DAL.tbIncidencia>
+
+@{
+    ViewBag.Title = "Incidencias";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Nuevo", "Create", null, new { @class = "btn btn-primary btn-sm" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Identificacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.primer_nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.segundo_nombrre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.primer_apellido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.segundo_apellido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.direccion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.telefono)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.correo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tbEstado_Incidencia.EstdDescripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tbTipoIncidencia.TipoInDescripcion)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Identificacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.primer_nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.segundo_nombrre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.primer_apellido)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.segundo_apellido)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.direccion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.telefono)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.correo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbEstado_Incidencia.EstdDescripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbTipoIncidencia.TipoInDescripcion)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id },new { @class = "btn btn-primary btn-sm" }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }, new { @class = "btn btn-primary btn-sm" }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id }, new { @class = "btn btn-primary btn-sm" })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BD_SEARCHFOODModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tbEstado_Incidencia">
+    <Key>
+      <PropertyRef Name="Id_EstdIncidencia" />
+    </Key>
+    <Property Name="Id_EstdIncidencia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EstdDescripcion" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="tbIncidencia">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Identificacion" Type="bigint" />
+    <Property Name="primer_nombre" Type="varchar" MaxLength="80" />
+    <Property Name="segundo_nombrre" Type="varchar" MaxLength="80" />
+    <Property Name="primer_apellido" Type="varchar" MaxLength="80" />
+    <Property Name="segundo_apellido" Type="varchar" MaxLength="80" />
+    <Property Name="direccion" Type="varchar" MaxLength="80" />
+    <Property Name="telefono" Type="varchar" MaxLength="80" />
+    <Property Name="correo" Type="varchar(max)" />
+    <Property Name="Estado_Indicencia" Type="int" />
+    <Property Name="Tipo_Incidencia" Type="int" />
+  </EntityType>
+  <EntityType Name="tbIncidencia_Comentarios">
+    <Key>
+      <PropertyRef Name="Id_ICom" />
+    </Key>
+    <Property Name="Id_ICom" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_Incidencia" Type="int" />
+    <Property Name="Comentarios" Type="varchar(max)" />
+    <Property Name="Estado_Incidencia_IDCom" Type="int" />
+  </EntityType>
+  <EntityType Name="tbTipoIncidencia">
+    <Key>
+      <PropertyRef Name="Id_TipoIncidencia" />
+    </Key>
+    <Property Name="Id_TipoIncidencia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TipoInDescripcion" Type="varchar(max)" />
+  </EntityType>
+  <Association Name="FK_tbIncidencia_Comentarios_tbEstado_Incidencia">
+    <End Role="tbEstado_Incidencia" Type="Self.tbEstado_Incidencia" Multiplicity="0..1" />
+    <End Role="tbIncidencia_Comentarios" Type="Self.tbIncidencia_Comentarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbEstado_Incidencia">
+        <PropertyRef Name="Id_EstdIncidencia" />
+      </Principal>
+      <Dependent Role="tbIncidencia_Comentarios">
+        <PropertyRef Name="Estado_Incidencia_IDCom" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbIncidencia_Comentarios_tbIncidencia">
+    <End Role="tbIncidencia" Type="Self.tbIncidencia" Multiplicity="0..1" />
+    <End Role="tbIncidencia_Comentarios" Type="Self.tbIncidencia_Comentarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbIncidencia">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tbIncidencia_Comentarios">
+        <PropertyRef Name="Id_Incidencia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbIncidencia_tbEstado_Incidencia">
+    <End Role="tbEstado_Incidencia" Type="Self.tbEstado_Incidencia" Multiplicity="0..1" />
+    <End Role="tbIncidencia" Type="Self.tbIncidencia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbEstado_Incidencia">
+        <PropertyRef Name="Id_EstdIncidencia" />
+      </Principal>
+      <Dependent Role="tbIncidencia">
+        <PropertyRef Name="Estado_Indicencia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbIncidencia_tbTipoIncidencia">
+    <End Role="tbTipoIncidencia" Type="Self.tbTipoIncidencia" Multiplicity="0..1" />
+    <End Role="tbIncidencia" Type="Self.tbIncidencia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbTipoIncidencia">
+        <PropertyRef Name="Id_TipoIncidencia" />
+      </Principal>
+      <Dependent Role="tbIncidencia">
+        <PropertyRef Name="Tipo_Incidencia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BD_SEARCHFOODModelStoreContainer">
+    <EntitySet Name="tbEstado_Incidencia" EntityType="Self.tbEstado_Incidencia" Schema="PQRS" store:Type="Tables" />
+    <EntitySet Name="tbIncidencia" EntityType="Self.tbIncidencia" Schema="PQRS" store:Type="Tables" />
+    <EntitySet Name="tbIncidencia_Comentarios" EntityType="Self.tbIncidencia_Comentarios" Schema="PQRS" store:Type="Tables" />
+    <EntitySet Name="tbTipoIncidencia" EntityType="Self.tbTipoIncidencia" Schema="PQRS" store:Type="Tables" />
+    <AssociationSet Name="FK_tbIncidencia_Comentarios_tbEstado_Incidencia" Association="Self.FK_tbIncidencia_Comentarios_tbEstado_Incidencia">
+      <End Role="tbEstado_Incidencia" EntitySet="tbEstado_Incidencia" />
+      <End Role="tbIncidencia_Comentarios" EntitySet="tbIncidencia_Comentarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbIncidencia_Comentarios_tbIncidencia" Association="Self.FK_tbIncidencia_Comentarios_tbIncidencia">
+      <End Role="tbIncidencia" EntitySet="tbIncidencia" />
+      <End Role="tbIncidencia_Comentarios" EntitySet="tbIncidencia_Comentarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbIncidencia_tbEstado_Incidencia" Association="Self.FK_tbIncidencia_tbEstado_Incidencia">
+      <End Role="tbEstado_Incidencia" EntitySet="tbEstado_Incidencia" />
+      <End Role="tbIncidencia" EntitySet="tbIncidencia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbIncidencia_tbTipoIncidencia" Association="Self.FK_tbIncidencia_tbTipoIncidencia">
+      <End Role="tbTipoIncidencia" EntitySet="tbTipoIncidencia" />
+      <End Role="tbIncidencia" EntitySet="tbIncidencia" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

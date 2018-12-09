@@ -53,5 +53,30 @@ namespace PI_Searchfood.Views.Cliente
 
             }
         }
+
+        protected void btnCR_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnCE_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnCD_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnCV_Click(object sender, EventArgs e)
+        {
+
+        }
+
+               protected void btnGUARDAR_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
